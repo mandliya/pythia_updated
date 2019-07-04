@@ -1,6 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 import numpy as np
 import torch
+import traceback
 
 
 class ImageDatabase(torch.utils.data.Dataset):
@@ -54,6 +55,7 @@ class ImageDatabase(torch.utils.data.Dataset):
 
     def __getitem__(self, idx):
         data = self.data[idx + self.start_idx]
+        traceback.print_stack()
 
         # Hacks for older IMDBs
         if "answers" not in data:

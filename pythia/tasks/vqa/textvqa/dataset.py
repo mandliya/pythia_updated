@@ -1,12 +1,14 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from pythia.tasks.vqa.vizwiz import VizWizDataset
 from pythia.utils.text_utils import word_tokenize
+import traceback
 
 
 class TextVQADataset(VizWizDataset):
     def __init__(self, dataset_type, imdb_file_index, config, *args, **kwargs):
         super().__init__(dataset_type, imdb_file_index, config, *args, **kwargs)
         self._name = "textvqa"
+        traceback.print_stack()
 
     def format_for_evalai(self, report):
         answers = report.scores.argmax(dim=1)

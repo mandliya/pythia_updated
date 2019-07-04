@@ -102,6 +102,7 @@ class Checkpoint:
             if "fa_history" in attr:
                 new_dict[attr.replace("fa_history", "fa_context")] = ckpt_model[attr]
             elif data_parallel is False and attr.startswith("module."):
+                print("Attrr: ", attr)
                 # In case the ckpt was actually a data parallel model
                 # replace first module. from dataparallel with empty string
                 new_dict[attr.replace("module.", "", 1)] = ckpt_model[attr]
@@ -167,6 +168,10 @@ class Checkpoint:
 
         if not data_parallel:
             for key in attr_mapping:
+                print("Keyeeeee : ", key)
+                if key == 'classifier.module.linear_text.weight':
+                    print(attr_mapping[key])
+
                 attr_mapping[key.replace("module.", "")] = attr_mapping[key]
                 attr_mapping.pop(key)
 

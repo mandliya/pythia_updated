@@ -235,6 +235,7 @@ class Registry:
                 ...
 
         """
+        print("Registering processor:", name, cls)
 
         def wrap(func):
             from pythia.tasks.processors import BaseProcessor
@@ -243,6 +244,7 @@ class Registry:
                 func, BaseProcessor
             ), "All Processor classes must inherit BaseProcessor class"
             cls.mapping["processor_name_mapping"][name] = func
+            print(func)
             return func
 
         return wrap

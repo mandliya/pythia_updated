@@ -4,11 +4,15 @@ import torch
 from pythia.common.registry import registry
 from pythia.models.pythia import Pythia
 from pythia.modules.layers import ClassifierLayer
+from pprint import pprint
 
 
 @registry.register_model("lorra")
 class LoRRA(Pythia):
     def __init__(self, config):
+        #print("--------------------------------------------------------------------------------START THIS IS LORRA's config------------------------------------------")
+        #pprint(config)
+        #print("--------------------------------------------------------------------------------END THIS IS LORRA's config------------------------------------------")
         super().__init__(config)
 
     def build(self):

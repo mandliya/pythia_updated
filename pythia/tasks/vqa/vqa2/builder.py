@@ -30,6 +30,7 @@ class VQA2Builder(BaseDatasetBuilder):
 
         self.dataset = self.prepare_data_set(dataset_type, config)
 
+
         return self.dataset
 
     def _build(self, dataset_type, config):

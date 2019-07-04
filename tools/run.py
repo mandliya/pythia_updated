@@ -2,11 +2,14 @@
 import glob
 import importlib
 import os
+import time
 
 from pythia.common.registry import registry
 from pythia.utils.build_utils import build_trainer
 from pythia.utils.distributed_utils import is_main_process
 from pythia.utils.flags import flags
+#from hunter import remote
+from pprint import pprint
 
 
 def setup_imports():
@@ -72,9 +75,15 @@ def setup_imports():
 
 
 def run():
+    #print("Process ID is", os.getpid())
+    #remote.install(verbose=False)
+    #print("Sleep for a while, so that hunter can trace the process")
+    #time.sleep(20)
+    #print("Sleep done!")
     setup_imports()
     parser = flags.get_parser()
     args = parser.parse_args()
+    pprint(args)
     trainer = build_trainer(args)
 
     # Log any errors that occur to log file
@@ -88,7 +97,6 @@ def run():
             writer.write(e, "error", donot_print=True)
         if is_main_process():
             raise
-
 
 if __name__ == "__main__":
     run()

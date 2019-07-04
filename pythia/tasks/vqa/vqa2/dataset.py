@@ -10,6 +10,7 @@ from pythia.tasks.features_dataset import FeaturesDataset
 from pythia.tasks.image_database import ImageDatabase
 from pythia.utils.distributed_utils import is_main_process
 from pythia.utils.general import get_pythia_root
+from pprint import pprint
 
 
 class VQA2Dataset(BaseDataset):
@@ -130,6 +131,10 @@ class VQA2Dataset(BaseDataset):
 
     def add_ocr_details(self, sample_info, sample):
         if self.use_ocr:
+            pprint(sample_info.keys())
+            pprint("OCR_tokens")
+            pprint(sample_info["ocr_tokens"])
+            pprint(sample_info["question_tokens"])
             # Preprocess OCR tokens
             ocr_tokens = [
                 self.ocr_token_processor({"text": token})["text"]

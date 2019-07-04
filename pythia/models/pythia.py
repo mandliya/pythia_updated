@@ -56,6 +56,7 @@ class Pythia(BaseModel):
 
         setattr(self, attr + "_out_dim", embeddings_out_dim)
         setattr(self, attr, nn.ModuleList(text_embeddings))
+        print("text_embeddings: ", self.text_embeddings_out_dim)
 
     def _update_text_embedding_args(self, args):
         # Add model_data_dir to kwargs
@@ -143,6 +144,7 @@ class Pythia(BaseModel):
     def _init_classifier(self, combined_embedding_dim):
         # TODO: Later support multihead
         num_choices = registry.get(self._datasets[0] + "_num_final_outputs")
+        print("Classifier dimensions:", combined_embedding_dim, " out_dim", num_choices)
 
         self.classifier = ClassifierLayer(
             self.config["classifier"]["type"],
@@ -171,6 +173,7 @@ class Pythia(BaseModel):
         return params
 
     def _get_classifier_input_dim(self):
+        print("Multi Modal combine layer:", self.image_text_multi_modal_combine_layer.out_dim)
         return self.image_text_multi_modal_combine_layer.out_dim
 
     def process_text_embedding(

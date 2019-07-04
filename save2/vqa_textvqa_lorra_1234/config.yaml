@@ -1,0 +1,267 @@
+datasets: textvqa
+log_foldername: vqa_textvqa_lorra_1234
+model: lorra
+model_attributes:
+  lorra:
+    classifier:
+      params:
+        img_hidden_dim: 5000
+        text_hidden_dim: 300
+      type: logit
+    context_embeddings:
+    - params:
+        embedding_dim: 350
+      type: identity
+    context_feature_dim: 300
+    context_feature_embeddings:
+    - modal_combine:
+        params:
+          dropout: 0
+          hidden_dim: 5000
+        type: non_linear_element_multiply
+      normalization: sigmoid
+      transform:
+        params:
+          out_dim: 1
+        type: linear
+    context_feature_encodings:
+    - params:
+        model_data_dir: ../data
+      type: default
+    context_max_len: 50
+    image_feature_dim: 2048
+    image_feature_embeddings:
+    - modal_combine:
+        params:
+          dropout: 0
+          hidden_dim: 5000
+        type: non_linear_element_multiply
+      normalization: softmax
+      transform:
+        params:
+          out_dim: 1
+        type: linear
+    image_feature_encodings:
+    - params:
+        bias_file: detectron/fc6/fc7_b.pkl
+        model_data_dir: ../data
+        weights_file: detectron/fc6/fc7_w.pkl
+      type: finetune_faster_rcnn_fpn_fc7
+    - params:
+        model_data_dir: ../data
+      type: default
+    image_text_modal_combine:
+      params:
+        context_dim: 350
+        dropout: 0
+        hidden_dim: 5000
+      type: non_linear_element_multiply
+    losses:
+    - type: logit_bce
+    metrics:
+    - type: vqa_accuracy
+    model: lorra
+    model_data_dir: ../data
+    num_context_features: 1
+    text_embeddings:
+    - params:
+        conv1_out: 512
+        conv2_out: 2
+        dropout: 0
+        embedding_dim: 300
+        hidden_dim: 1024
+        kernel_size: 1
+        num_layers: 1
+        padding: 0
+      type: attention
+  lorra_with_glove:
+    classifier:
+      params:
+        img_hidden_dim: 5000
+        text_hidden_dim: 300
+      type: logit
+    context_embeddings:
+    - params:
+        embedding_dim: 350
+      type: identity
+    context_feature_dim: 300
+    context_feature_embeddings:
+    - modal_combine:
+        params:
+          dropout: 0
+          hidden_dim: 5000
+        type: non_linear_element_multiply
+      normalization: sigmoid
+      transform:
+        params:
+          out_dim: 1
+        type: linear
+    context_feature_encodings:
+    - params:
+        model_data_dir: ../data
+      type: default
+    context_max_len: 50
+    image_feature_dim: 2048
+    image_feature_embeddings:
+    - modal_combine:
+        params:
+          dropout: 0
+          hidden_dim: 5000
+        type: non_linear_element_multiply
+      normalization: softmax
+      transform:
+        params:
+          out_dim: 1
+        type: linear
+    image_feature_encodings:
+    - params:
+        bias_file: detectron/fc6/fc7_b.pkl
+        model_data_dir: ../data
+        weights_file: detectron/fc6/fc7_w.pkl
+      type: finetune_faster_rcnn_fpn_fc7
+    - params:
+        model_data_dir: ../data
+      type: default
+    image_text_modal_combine:
+      params:
+        context_dim: 350
+        dropout: 0
+        hidden_dim: 5000
+      type: non_linear_element_multiply
+    losses:
+    - type: logit_bce
+    metrics:
+    - type: vqa_accuracy
+    model_data_dir: ../data
+    num_context_features: 1
+    text_embeddings:
+    - params:
+        conv1_out: 512
+        conv2_out: 2
+        dropout: 0
+        embedding_dim: 300
+        hidden_dim: 1024
+        kernel_size: 1
+        num_layers: 1
+        padding: 0
+      type: attention
+optimizer_attributes:
+  params:
+    eps: 1e-08
+    lr: 0.01
+    weight_decay: 0
+  type: Adamax
+task_attributes:
+  vqa:
+    dataset_attributes:
+      textvqa:
+        data_root_dir: ../data
+        fast_read: False
+        features_max_len: 137
+        image_depth_first: False
+        image_features:
+          test:
+          - open_images/detectron_fix_100/fc6/test,open_images/resnet152/test
+          train:
+          - open_images/detectron_fix_100/fc6/train,open_images/resnet152/train
+          val:
+          - open_images/detectron_fix_100/fc6/train,open_images/resnet152/train
+        imdb_files:
+          test:
+          - imdb/textvqa_0.5/imdb_textvqa_test.npy
+          train:
+          - imdb/textvqa_0.5/imdb_textvqa_train.npy
+          val:
+          - imdb/textvqa_0.5/imdb_textvqa_val.npy
+        processors:
+          answer_processor:
+            params:
+              context_preprocessor:
+                params:
+                  
+                type: simple_word
+              max_length: 50
+              num_answers: 10
+              preprocessor:
+                params:
+                  
+                type: simple_word
+              vocab_file: vocabs/answers_textvqa_more_than_1.txt
+            type: soft_copy_answer
+          bbox_processor:
+            params:
+              max_length: 50
+            type: bbox
+          context_processor:
+            params:
+              max_length: 50
+              model_file: .vector_cache/wiki.en.bin
+            type: fasttext
+          ocr_token_processor:
+            params:
+              
+            type: simple_word
+          text_processor:
+            params:
+              max_length: 14
+              preprocessor:
+                params:
+                  
+                type: simple_sentence
+              vocab:
+                embedding_name: glove.6B.300d
+                type: intersected
+                vocab_file: vocabs/vocabulary_100k.txt
+            type: vocab
+        return_info: True
+        use_ocr: True
+        use_ocr_info: False
+    dataset_size_proportional_sampling: True
+    dataset_type: test
+    datasets: textvqa
+tasks: vqa
+training_parameters:
+  batch_size: 128
+  clip_gradients: True
+  clip_norm_mode: all
+  data_parallel: False
+  device: cuda
+  distributed: False
+  evalai_inference: True
+  experiment_name: run
+  load_pretrained: False
+  local_rank: None
+  log_dir: ./logs
+  log_interval: 100
+  logger_level: info
+  lr_ratio: 0.01
+  lr_scheduler: True
+  lr_steps:
+  - 14000
+  max_epochs: None
+  max_grad_l2_norm: 0.25
+  max_iterations: 24000
+  metric_minimize: False
+  monitored_metric: vqa_accuracy
+  num_workers: 2
+  patience: 4000
+  pin_memory: False
+  pretrained_mapping:
+    image_feature_embeddings_list: image_feature_embeddings_list
+    image_feature_encoders: image_feature_encoders
+    image_text_multi_modal_combine_layer: image_text_multi_modal_combine_layer
+    text_embeddings: text_embeddings
+  resume: False
+  resume_file: data/models/lorra_best.pth
+  run_type: inference
+  save_dir: ./save
+  seed: 1234
+  should_early_stop: False
+  should_not_log: False
+  snapshot_interval: 1000
+  task_size_proportional_sampling: True
+  trainer: base_trainer
+  use_warmup: True
+  verbose_dump: False
+  warmup_factor: 0.2
+  warmup_iterations: 1000

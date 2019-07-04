@@ -1,6 +1,7 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from pythia.tasks.vqa.vizwiz import VizWizDataset
 from pythia.utils.text_utils import word_tokenize
+import traceback
 
 
 class VQA2OCRDataset(VizWizDataset):
@@ -9,6 +10,7 @@ class VQA2OCRDataset(VizWizDataset):
             imdb_file, image_feat_directories, verbose, **data_params
         )
         self.name = "vqa2_ocr"
+        traceback.print_stack()
 
     def format_for_evalai(self, batch, answers):
         answers = answers.argmax(dim=1)

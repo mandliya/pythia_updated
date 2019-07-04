@@ -1,0 +1,3494 @@
+Registering processor: vocab <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.VocabProcessor'>
+Registering processor: glove <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.GloVeProcessor'>
+Registering processor: fasttext <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.FastTextProcessor'>
+Registering processor: vqa_answer <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.VQAAnswerProcessor'>
+Registering processor: soft_copy_answer <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.SoftCopyAnswerProcessor'>
+Registering processor: simple_word <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.SimpleWordProcessor'>
+Registering processor: simple_sentence <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.SimpleSentenceProcessor'>
+Registering processor: bbox <class 'pythia.common.registry.Registry'>
+<class 'pythia.tasks.processors.BBoxProcessor'>
+Namespace(batch_size=None, clip_gradients=None, config='configs/vqa/textvqa/lorra.yml', config_override=None, config_overwrite=None, data_parallel=None, datasets='textvqa', device=None, distributed=None, evalai_inference=True, experiment_name=None, fast_read=None, force_restart=False, load_pretrained=None, local_rank=None, log_dir=None, log_interval=None, logger_level=None, lr_scheduler=None, max_epochs=None, max_iterations=None, model='lorra', num_workers=None, opts=[], patience=None, resume=None, resume_file='data/models/lorra_best.pth', run_type='val', save_dir='./save', seed=1234, should_not_log=False, snapshot_interval=None, tasks='vqa', verbose_dump=None)
+----------------------------------------------------START COMPLETE CONFIG-------------------------------------------------------
+{'datasets': 'textvqa',
+ 'model': 'lorra',
+ 'model_attributes': {'lorra': {'classifier': {'params': {'img_hidden_dim': 5000,
+                                                          'text_hidden_dim': 300},
+                                               'type': 'logit'},
+                                'context_embeddings': [{'params': {'embedding_dim': 350},
+                                                        'type': 'identity'}],
+                                'context_feature_dim': 300,
+                                'context_feature_embeddings': [{'modal_combine': {'params': {'dropout': 0,
+                                                                                             'hidden_dim': 5000},
+                                                                                  'type': 'non_linear_element_multiply'},
+                                                                'normalization': 'sigmoid',
+                                                                'transform': {'params': {'out_dim': 1},
+                                                                              'type': 'linear'}}],
+                                'context_feature_encodings': [{'params': {},
+                                                               'type': 'default'}],
+                                'context_max_len': 50,
+                                'image_feature_dim': 2048,
+                                'image_feature_embeddings': [{'modal_combine': {'params': {'dropout': 0,
+                                                                                           'hidden_dim': 5000},
+                                                                                'type': 'non_linear_element_multiply'},
+                                                              'normalization': 'softmax',
+                                                              'transform': {'params': {'out_dim': 1},
+                                                                            'type': 'linear'}}],
+                                'image_feature_encodings': [{'params': {'bias_file': 'detectron/fc6/fc7_b.pkl',
+                                                                        'weights_file': 'detectron/fc6/fc7_w.pkl'},
+                                                             'type': 'finetune_faster_rcnn_fpn_fc7'},
+                                                            {'params': {},
+                                                             'type': 'default'}],
+                                'image_text_modal_combine': {'params': {'context_dim': 350,
+                                                                        'dropout': 0,
+                                                                        'hidden_dim': 5000},
+                                                             'type': 'non_linear_element_multiply'},
+                                'losses': [{'type': 'logit_bce'}],
+                                'metrics': [{'type': 'vqa_accuracy'}],
+                                'model_data_dir': '../data',
+                                'num_context_features': 1,
+                                'text_embeddings': [{'params': {'conv1_out': 512,
+                                                                'conv2_out': 2,
+                                                                'dropout': 0,
+                                                                'embedding_dim': 300,
+                                                                'hidden_dim': 1024,
+                                                                'kernel_size': 1,
+                                                                'num_layers': 1,
+                                                                'padding': 0},
+                                                     'type': 'attention'}]},
+                      'lorra_with_glove': {'classifier': {'params': {'img_hidden_dim': 5000,
+                                                                     'text_hidden_dim': 300},
+                                                          'type': 'logit'},
+                                           'context_embeddings': [{'params': {'embedding_dim': 350},
+                                                                   'type': 'identity'}],
+                                           'context_feature_dim': 300,
+                                           'context_feature_embeddings': [{'modal_combine': {'params': {'dropout': 0,
+                                                                                                        'hidden_dim': 5000},
+                                                                                             'type': 'non_linear_element_multiply'},
+                                                                           'normalization': 'sigmoid',
+                                                                           'transform': {'params': {'out_dim': 1},
+                                                                                         'type': 'linear'}}],
+                                           'context_feature_encodings': [{'params': {},
+                                                                          'type': 'default'}],
+                                           'context_max_len': 50,
+                                           'image_feature_dim': 2048,
+                                           'image_feature_embeddings': [{'modal_combine': {'params': {'dropout': 0,
+                                                                                                      'hidden_dim': 5000},
+                                                                                           'type': 'non_linear_element_multiply'},
+                                                                         'normalization': 'softmax',
+                                                                         'transform': {'params': {'out_dim': 1},
+                                                                                       'type': 'linear'}}],
+                                           'image_feature_encodings': [{'params': {'bias_file': 'detectron/fc6/fc7_b.pkl',
+                                                                                   'weights_file': 'detectron/fc6/fc7_w.pkl'},
+                                                                        'type': 'finetune_faster_rcnn_fpn_fc7'},
+                                                                       {'params': {},
+                                                                        'type': 'default'}],
+                                           'image_text_modal_combine': {'params': {'context_dim': 350,
+                                                                                   'dropout': 0,
+                                                                                   'hidden_dim': 5000},
+                                                                        'type': 'non_linear_element_multiply'},
+                                           'losses': [{'type': 'logit_bce'}],
+                                           'metrics': [{'type': 'vqa_accuracy'}],
+                                           'model_data_dir': '../data',
+                                           'num_context_features': 1,
+                                           'text_embeddings': [{'params': {'conv1_out': 512,
+                                                                           'conv2_out': 2,
+                                                                           'dropout': 0,
+                                                                           'embedding_dim': 300,
+                                                                           'hidden_dim': 1024,
+                                                                           'kernel_size': 1,
+                                                                           'num_layers': 1,
+                                                                           'padding': 0},
+                                                                'type': 'attention'}]}},
+ 'optimizer_attributes': {'params': {'eps': 1e-08,
+                                     'lr': 0.01,
+                                     'weight_decay': 0},
+                          'type': 'Adamax'},
+ 'task_attributes': {'vqa': {'dataset_attributes': {'textvqa': {'data_root_dir': '../data',
+                                                                'fast_read': False,
+                                                                'features_max_len': 137,
+                                                                'image_depth_first': False,
+                                                                'image_features': {'test': ['open_images/detectron_fix_100/fc6/test,open_images/resnet152/test'],
+                                                                                   'train': ['open_images/detectron_fix_100/fc6/train,open_images/resnet152/train'],
+                                                                                   'val': ['open_images/detectron_fix_100/fc6/train,open_images/resnet152/train']},
+                                                                'imdb_files': {'test': ['imdb/textvqa_0.5/imdb_textvqa_test.npy'],
+                                                                               'train': ['imdb/textvqa_0.5/imdb_textvqa_train.npy'],
+                                                                               'val': ['imdb/textvqa_0.5/imdb_textvqa_val.npy']},
+                                                                'processors': {'answer_processor': {'params': {'context_preprocessor': {'params': {},
+                                                                                                                                        'type': 'simple_word'},
+                                                                                                               'max_length': 50,
+                                                                                                               'num_answers': 10,
+                                                                                                               'preprocessor': {'params': {},
+                                                                                                                                'type': 'simple_word'},
+                                                                                                               'vocab_file': 'vocabs/answers_textvqa_more_than_1.txt'},
+                                                                                                    'type': 'soft_copy_answer'},
+                                                                               'bbox_processor': {'params': {'max_length': 50},
+                                                                                                  'type': 'bbox'},
+                                                                               'context_processor': {'params': {'max_length': 50,
+                                                                                                                'model_file': '.vector_cache/wiki.en.bin'},
+                                                                                                     'type': 'fasttext'},
+                                                                               'ocr_token_processor': {'params': {},
+                                                                                                       'type': 'simple_word'},
+                                                                               'text_processor': {'params': {'max_length': 14,
+                                                                                                             'preprocessor': {'params': {},
+                                                                                                                              'type': 'simple_sentence'},
+                                                                                                             'vocab': {'embedding_name': 'glove.6B.300d',
+                                                                                                                       'type': 'intersected',
+                                                                                                                       'vocab_file': 'vocabs/vocabulary_100k.txt'}},
+                                                                                                  'type': 'vocab'}},
+                                                                'return_info': True,
+                                                                'use_ocr': True,
+                                                                'use_ocr_info': False}},
+                             'dataset_size_proportional_sampling': True,
+                             'datasets': 'textvqa'}},
+ 'tasks': 'vqa',
+ 'training_parameters': {'batch_size': 128,
+                         'clip_gradients': True,
+                         'clip_norm_mode': 'all',
+                         'data_parallel': False,
+                         'device': 'cuda',
+                         'distributed': False,
+                         'evalai_inference': True,
+                         'experiment_name': 'run',
+                         'load_pretrained': False,
+                         'local_rank': None,
+                         'log_dir': './logs',
+                         'log_interval': 100,
+                         'logger_level': 'info',
+                         'lr_ratio': 0.01,
+                         'lr_scheduler': True,
+                         'lr_steps': [14000],
+                         'max_epochs': None,
+                         'max_grad_l2_norm': 0.25,
+                         'max_iterations': 24000,
+                         'metric_minimize': False,
+                         'monitored_metric': 'vqa_accuracy',
+                         'num_workers': 2,
+                         'patience': 4000,
+                         'pin_memory': False,
+                         'pretrained_mapping': {'image_feature_embeddings_list': 'image_feature_embeddings_list',
+                                                'image_feature_encoders': 'image_feature_encoders',
+                                                'image_text_multi_modal_combine_layer': 'image_text_multi_modal_combine_layer',
+                                                'text_embeddings': 'text_embeddings'},
+                         'resume': False,
+                         'resume_file': 'data/models/lorra_best.pth',
+                         'run_type': 'val',
+                         'save_dir': './save',
+                         'seed': 1234,
+                         'should_early_stop': False,
+                         'should_not_log': False,
+                         'snapshot_interval': 1000,
+                         'task_size_proportional_sampling': True,
+                         'trainer': 'base_trainer',
+                         'use_warmup': True,
+                         'verbose_dump': False,
+                         'warmup_factor': 0.2,
+                         'warmup_iterations': 1000}}
+----------------------------------------------------END COMPLETE CONFIG-------------------------------------------------------
+'base_trainer'
+<class 'pythia.trainers.base_trainer.BaseTrainer'>
+Logging to: ./save/vqa_textvqa_lorra_1234/logs/vqa_textvqa_lorra_1234_2019-07-04T19:34:12.log
+2019-07-04T19:34:12 INFO: =====  Training Parameters    =====
+2019-07-04T19:34:12 INFO: {
+    "batch_size": 128,
+    "clip_gradients": true,
+    "clip_norm_mode": "all",
+    "data_parallel": false,
+    "device": "cuda",
+    "distributed": false,
+    "evalai_inference": true,
+    "experiment_name": "run",
+    "load_pretrained": false,
+    "local_rank": null,
+    "log_dir": "./logs",
+    "log_interval": 100,
+    "logger_level": "info",
+    "lr_ratio": 0.01,
+    "lr_scheduler": true,
+    "lr_steps": [
+        14000
+    ],
+    "max_epochs": null,
+    "max_grad_l2_norm": 0.25,
+    "max_iterations": 24000,
+    "metric_minimize": false,
+    "monitored_metric": "vqa_accuracy",
+    "num_workers": 2,
+    "patience": 4000,
+    "pin_memory": false,
+    "pretrained_mapping": {
+        "image_feature_embeddings_list": "image_feature_embeddings_list",
+        "image_feature_encoders": "image_feature_encoders",
+        "image_text_multi_modal_combine_layer": "image_text_multi_modal_combine_layer",
+        "text_embeddings": "text_embeddings"
+    },
+    "resume": false,
+    "resume_file": "data/models/lorra_best.pth",
+    "run_type": "val",
+    "save_dir": "./save",
+    "seed": 1234,
+    "should_early_stop": false,
+    "should_not_log": false,
+    "snapshot_interval": 1000,
+    "task_size_proportional_sampling": true,
+    "trainer": "base_trainer",
+    "use_warmup": true,
+    "verbose_dump": false,
+    "warmup_factor": 0.2,
+    "warmup_iterations": 1000
+}
+2019-07-04T19:34:12 INFO: ======  Task Attributes  ======
+2019-07-04T19:34:12 INFO: ======== vqa/textvqa =======
+2019-07-04T19:34:12 INFO: {
+    "data_root_dir": "../data",
+    "fast_read": false,
+    "features_max_len": 137,
+    "image_depth_first": false,
+    "image_features": {
+        "test": [
+            "open_images/detectron_fix_100/fc6/test,open_images/resnet152/test"
+        ],
+        "train": [
+            "open_images/detectron_fix_100/fc6/train,open_images/resnet152/train"
+        ],
+        "val": [
+            "open_images/detectron_fix_100/fc6/train,open_images/resnet152/train"
+        ]
+    },
+    "imdb_files": {
+        "test": [
+            "imdb/textvqa_0.5/imdb_textvqa_test.npy"
+        ],
+        "train": [
+            "imdb/textvqa_0.5/imdb_textvqa_train.npy"
+        ],
+        "val": [
+            "imdb/textvqa_0.5/imdb_textvqa_val.npy"
+        ]
+    },
+    "processors": {
+        "answer_processor": {
+            "params": {
+                "context_preprocessor": {
+                    "params": {},
+                    "type": "simple_word"
+                },
+                "max_length": 50,
+                "num_answers": 10,
+                "preprocessor": {
+                    "params": {},
+                    "type": "simple_word"
+                },
+                "vocab_file": "vocabs/answers_textvqa_more_than_1.txt"
+            },
+            "type": "soft_copy_answer"
+        },
+        "bbox_processor": {
+            "params": {
+                "max_length": 50
+            },
+            "type": "bbox"
+        },
+        "context_processor": {
+            "params": {
+                "max_length": 50,
+                "model_file": ".vector_cache/wiki.en.bin"
+            },
+            "type": "fasttext"
+        },
+        "ocr_token_processor": {
+            "params": {},
+            "type": "simple_word"
+        },
+        "text_processor": {
+            "params": {
+                "max_length": 14,
+                "preprocessor": {
+                    "params": {},
+                    "type": "simple_sentence"
+                },
+                "vocab": {
+                    "embedding_name": "glove.6B.300d",
+                    "type": "intersected",
+                    "vocab_file": "vocabs/vocabulary_100k.txt"
+                }
+            },
+            "type": "vocab"
+        }
+    },
+    "return_info": true,
+    "use_ocr": true,
+    "use_ocr_info": false
+}
+2019-07-04T19:34:12 INFO: ======  Optimizer Attributes  ======
+2019-07-04T19:34:12 INFO: {
+    "params": {
+        "eps": 1e-08,
+        "lr": 0.01,
+        "weight_decay": 0
+    },
+    "type": "Adamax"
+}
+2019-07-04T19:34:12 INFO: ======  Model (lorra) Attributes  ======
+2019-07-04T19:34:12 INFO: {
+    "classifier": {
+        "params": {
+            "img_hidden_dim": 5000,
+            "text_hidden_dim": 300
+        },
+        "type": "logit"
+    },
+    "context_embeddings": [
+        {
+            "params": {
+                "embedding_dim": 350
+            },
+            "type": "identity"
+        }
+    ],
+    "context_feature_dim": 300,
+    "context_feature_embeddings": [
+        {
+            "modal_combine": {
+                "params": {
+                    "dropout": 0,
+                    "hidden_dim": 5000
+                },
+                "type": "non_linear_element_multiply"
+            },
+            "normalization": "sigmoid",
+            "transform": {
+                "params": {
+                    "out_dim": 1
+                },
+                "type": "linear"
+            }
+        }
+    ],
+    "context_feature_encodings": [
+        {
+            "params": {},
+            "type": "default"
+        }
+    ],
+    "context_max_len": 50,
+    "image_feature_dim": 2048,
+    "image_feature_embeddings": [
+        {
+            "modal_combine": {
+                "params": {
+                    "dropout": 0,
+                    "hidden_dim": 5000
+                },
+                "type": "non_linear_element_multiply"
+            },
+            "normalization": "softmax",
+            "transform": {
+                "params": {
+                    "out_dim": 1
+                },
+                "type": "linear"
+            }
+        }
+    ],
+    "image_feature_encodings": [
+        {
+            "params": {
+                "bias_file": "detectron/fc6/fc7_b.pkl",
+                "weights_file": "detectron/fc6/fc7_w.pkl"
+            },
+            "type": "finetune_faster_rcnn_fpn_fc7"
+        },
+        {
+            "params": {},
+            "type": "default"
+        }
+    ],
+    "image_text_modal_combine": {
+        "params": {
+            "context_dim": 350,
+            "dropout": 0,
+            "hidden_dim": 5000
+        },
+        "type": "non_linear_element_multiply"
+    },
+    "losses": [
+        {
+            "type": "logit_bce"
+        }
+    ],
+    "metrics": [
+        {
+            "type": "vqa_accuracy"
+        }
+    ],
+    "model_data_dir": "../data",
+    "num_context_features": 1,
+    "text_embeddings": [
+        {
+            "params": {
+                "conv1_out": 512,
+                "conv2_out": 2,
+                "dropout": 0,
+                "embedding_dim": 300,
+                "hidden_dim": 1024,
+                "kernel_size": 1,
+                "num_layers": 1,
+                "padding": 0
+            },
+            "type": "attention"
+        }
+    ]
+}
+2019-07-04T19:34:13 INFO: Loading tasks and data
+text_embeddings:  2048
+text_embeddings:  2048
+text_embeddings:  2048
+Multi Modal combine layer: 5000
+Classifier dimensions: 10000  out_dim 4047
+2019-07-04T19:34:25 INFO: CUDA Device 0 is: Tesla K80
+2019-07-04T19:34:31 INFO: Torch version is: 1.1.0
+2019-07-04T19:34:31 INFO: Loading checkpoint
+Attrr:  module.word_embedding.weight
+Attrr:  module.text_embeddings.0.module.recurrent_unit.weight_ih_l0
+Attrr:  module.text_embeddings.0.module.recurrent_unit.weight_hh_l0
+Attrr:  module.text_embeddings.0.module.recurrent_unit.bias_ih_l0
+Attrr:  module.text_embeddings.0.module.recurrent_unit.bias_hh_l0
+Attrr:  module.text_embeddings.0.module.conv1.weight
+Attrr:  module.text_embeddings.0.module.conv1.bias
+Attrr:  module.text_embeddings.0.module.conv2.weight
+Attrr:  module.text_embeddings.0.module.conv2.bias
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.bias
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.weight_g
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.weight_v
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.bias
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.weight_g
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.weight_v
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.bias
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.weight_g
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.weight_v
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.transform.module.lc.bias
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.transform.module.lc.weight_g
+Attrr:  module.context_feature_embeddings_list.0.0.image_attention_model.module.transform.module.lc.weight_v
+Attrr:  module.image_feature_encoders.0.module.lc.weight
+Attrr:  module.image_feature_encoders.0.module.lc.bias
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.bias
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.weight_g
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.weight_v
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.bias
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.weight_g
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.weight_v
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.bias
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.weight_g
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.weight_v
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.transform.module.lc.bias
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.transform.module.lc.weight_g
+Attrr:  module.image_feature_embeddings_list.0.0.image_attention_model.module.transform.module.lc.weight_v
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.bias
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.weight_g
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_image.layers.0.weight_v
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.bias
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.weight_g
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_txt.layers.0.weight_v
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.bias
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.weight_g
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.combination_layer.module.fa_context.layers.0.weight_v
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.transform.module.lc.bias
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.transform.module.lc.weight_g
+Attrr:  module.image_feature_embeddings_list.1.0.image_attention_model.module.transform.module.lc.weight_v
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_image.layers.0.bias
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_image.layers.0.weight_g
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_image.layers.0.weight_v
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_txt.layers.0.bias
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_txt.layers.0.weight_g
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_txt.layers.0.weight_v
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_context.layers.0.bias
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_context.layers.0.weight_g
+Attrr:  module.image_text_multi_modal_combine_layer.module.fa_context.layers.0.weight_v
+Attrr:  module.classifier.module.f_o_text.layers.0.bias
+Attrr:  module.classifier.module.f_o_text.layers.0.weight_g
+Attrr:  module.classifier.module.f_o_text.layers.0.weight_v
+Attrr:  module.classifier.module.f_o_image.layers.0.bias
+Attrr:  module.classifier.module.f_o_image.layers.0.weight_g
+Attrr:  module.classifier.module.f_o_image.layers.0.weight_v
+Attrr:  module.classifier.module.linear_text.weight
+Attrr:  module.classifier.module.linear_text.bias
+Attrr:  module.classifier.module.linear_image.weight
+Attrr:  module.classifier.module.linear_image.bias
+2019-07-04T19:34:39 WARNING: /home/rmandli_g_clemson_edu/pythia/pythia/utils/checkpoint.py:121: UserWarning: 'optimizer' key is not present in the checkpoint asked to be loaded. Skipping.
+  "'optimizer' key is not present in the "
+
+2019-07-04T19:34:39 INFO: Checkpoint loaded
+2019-07-04T19:34:39 INFO: ===== Model =====
+2019-07-04T19:34:39 INFO: LoRRA(
+  (text_embeddings): ModuleList(
+    (0): TextEmbedding(
+      (module): AttentionTextEmbedding(
+        (recurrent_unit): LSTM(300, 1024, batch_first=True)
+        (dropout): Dropout(p=0)
+        (conv1): Conv1d(1024, 512, kernel_size=(1,), stride=(1,))
+        (conv2): Conv1d(512, 2, kernel_size=(1,), stride=(1,))
+        (relu): ReLU()
+      )
+    )
+  )
+  (context_embeddings): ModuleList(
+    (0): TextEmbedding(
+      (module): Identity()
+    )
+  )
+  (context_feature_encoders): ModuleList(
+    (0): ImageEncoder(
+      (module): Identity()
+    )
+  )
+  (context_feature_embeddings_list): ModuleList(
+    (0): ModuleList(
+      (0): ImageEmbedding(
+        (image_attention_model): AttentionLayer(
+          (module): TopDownAttention(
+            (combination_layer): ModalCombineLayer(
+              (module): NonLinearElementMultiply(
+                (fa_image): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=300, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (fa_txt): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (fa_context): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (dropout): Dropout(p=0)
+              )
+            )
+            (transform): TransformLayer(
+              (module): LinearTransform(
+                (lc): Linear(in_features=5000, out_features=1, bias=True)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+  (word_embedding): Embedding(75505, 300)
+  (image_feature_encoders): ModuleList(
+    (0): ImageEncoder(
+      (module): FinetuneFasterRcnnFpnFc7(
+        (lc): Linear(in_features=2048, out_features=2048, bias=True)
+      )
+    )
+    (1): ImageEncoder(
+      (module): Identity()
+    )
+  )
+  (image_feature_embeddings_list): ModuleList(
+    (0): ModuleList(
+      (0): ImageEmbedding(
+        (image_attention_model): AttentionLayer(
+          (module): TopDownAttention(
+            (combination_layer): ModalCombineLayer(
+              (module): NonLinearElementMultiply(
+                (fa_image): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (fa_txt): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (fa_context): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (dropout): Dropout(p=0)
+              )
+            )
+            (transform): TransformLayer(
+              (module): LinearTransform(
+                (lc): Linear(in_features=5000, out_features=1, bias=True)
+              )
+            )
+          )
+        )
+      )
+    )
+    (1): ModuleList(
+      (0): ImageEmbedding(
+        (image_attention_model): AttentionLayer(
+          (module): TopDownAttention(
+            (combination_layer): ModalCombineLayer(
+              (module): NonLinearElementMultiply(
+                (fa_image): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (fa_txt): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (fa_context): ReLUWithWeightNormFC(
+                  (layers): Sequential(
+                    (0): Linear(in_features=2048, out_features=5000, bias=True)
+                    (1): ReLU()
+                  )
+                )
+                (dropout): Dropout(p=0)
+              )
+            )
+            (transform): TransformLayer(
+              (module): LinearTransform(
+                (lc): Linear(in_features=5000, out_features=1, bias=True)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+  (image_text_multi_modal_combine_layer): ModalCombineLayer(
+    (module): NonLinearElementMultiply(
+      (fa_image): ReLUWithWeightNormFC(
+        (layers): Sequential(
+          (0): Linear(in_features=4096, out_features=5000, bias=True)
+          (1): ReLU()
+        )
+      )
+      (fa_txt): ReLUWithWeightNormFC(
+        (layers): Sequential(
+          (0): Linear(in_features=2048, out_features=5000, bias=True)
+          (1): ReLU()
+        )
+      )
+      (fa_context): ReLUWithWeightNormFC(
+        (layers): Sequential(
+          (0): Linear(in_features=350, out_features=5000, bias=True)
+          (1): ReLU()
+        )
+      )
+      (dropout): Dropout(p=0)
+    )
+  )
+  (classifier): ClassifierLayer(
+    (module): LogitClassifier(
+      (f_o_text): ReLUWithWeightNormFC(
+        (layers): Sequential(
+          (0): Linear(in_features=10000, out_features=300, bias=True)
+          (1): ReLU()
+        )
+      )
+      (f_o_image): ReLUWithWeightNormFC(
+        (layers): Sequential(
+          (0): Linear(in_features=10000, out_features=5000, bias=True)
+          (1): ReLU()
+        )
+      )
+      (linear_text): Linear(in_features=300, out_features=4047, bias=True)
+      (linear_image): Linear(in_features=5000, out_features=4047, bias=True)
+    )
+  )
+  (loss): Losses()
+)
+2019-07-04T19:34:39 INFO: Starting val inference for evalai
+2019-07-04T19:34:39 INFO: Predicting for textvqa
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['YA',
+ 'BETTER',
+ 'VABOOM',
+ 'BE',
+ 'QUICK',
+ 'OR',
+ 'ELSE',
+ 'Think',
+ "ou're",
+ 'pretty',
+ 'fast?',
+ 'Just',
+ 'ytaking',
+ 'Bomber.',
+ 'Somesa',
+ 'say',
+ 'unbeatable',
+ 'because',
+ 'aster',
+ 'makes',
+ 'KABOOM!',
+ 'plug',
+ '',
+ 'video',
+ 'KABOOM!',
+ 'ifyou',
+ 'handle',
+ 'him',
+ 'ahead.',
+ 'Tryto',
+ 'beat',
+ 'Bomber.',
+ 'emember',
+ 'that',
+ 'best',
+ 'ssooner',
+ 'rlater.',
+ 'then',
+ "it's..",
+ 'кавоом',
+ 'KaBOOM!',
+ 'ACTIVISION',
+ '@nssl/civion.ine']
+['what', 'does', 'it', 'say', 'in', 'red', 'text']
+2019-07-04T19:34:39 INFO: Fetching fastText model for OCR processing
+2019-07-04T19:34:39 INFO: Loading fasttext model now from /home/rmandli_g_clemson_edu/pythia/pythia/.vector_cache/wiki.en.bin
+2019-07-04T19:35:57 INFO: Finished loading fasttext model
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['STOP', 'ONLY', 'Henrymaxm', 'Photgraphy']
+['what', 'does', 'the', 'red', 'sign', 'mean']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['LESCH', 'GORT']
+['what', 'number', 'is', 'the', 'player', 'on', 'the', 'far', 'right']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['what', 'is', 'the', 'lowest', 'ml']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['U', 'EVER', 'ISY783A-1', '4', 'M']
+['what', 'branch', 'of', 'service', 'is', 'he', 'in']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['TTHE',
+ 'ONLY',
+ 'WAY',
+ 'AS',
+ 'BELOW',
+ 'ABOVE',
+ '@LEBENDARY',
+ '플REEM',
+ 'COMINGSOON']
+['what', 'is', 'the', 'movie', 'title']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['$']
+['what', 'brand', 'is', 'his', 'cleats']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['what', 'is', 'the', 'number', 'on', 'the', 'blue', 'container']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['$2.45',
+ '$2',
+ '39',
+ '20',
+ '$2.45',
+ '$2.39',
+ '2.39',
+ '$2.39',
+ '5',
+ '3/$5',
+ '3/$5',
+ '3/$5',
+ '3/$5',
+ 'SIFF',
+ 'RFF',
+ 'BfF',
+ 'KFF',
+ 'DIFF',
+ 'DFP',
+ 'TIE',
+ 'DYE',
+ 'BLUE',
+ 'PAERIUCARE',
+ 'CAMOUFLAG',
+ 'AGE',
+ 'PINK',
+ 'CAMOUFL',
+ 'AGE',
+ 'WUAUI',
+ '$3.29',
+ '$297',
+ '$297',
+ '297',
+ '$297']
+['how', 'man', 'price', 'tags', 'are', 'on', 'the', 'bottom', 'shelf']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['THE',
+ 'FIFTH',
+ 'COLUMN',
+ 'AND',
+ 'THE',
+ 'FIRST',
+ 'FORTY-',
+ 'NINE',
+ 'STORIES',
+ 'HEMINGWAY',
+ 'Cuustt',
+ 'Cسiل',
+ 'SCRIBNERS']
+['how',
+ 'many',
+ 'stories',
+ 'are',
+ 'in',
+ 'the',
+ 'book',
+ 'written',
+ 'by',
+ 'hemingway']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['JCT', '619', '617']
+['what', 'numbers', 'are', 'on', 'the', 'street', 'signs']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['STOP']
+['what', 'should', 'you', 'do', 'according', 'to', 'the', 'sign']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['�עובר',
+ 'SIONNYW',
+ 'aYaNV',
+ 'Aldous',
+ 'Huxley',
+ 'Mortal',
+ 'Coils',
+ 'William',
+ 'Sansom',
+ 'The',
+ 'Body',
+ 'THE',
+ 'PAINTED',
+ 'VEIL',
+ 'W.',
+ 'SOMERSET',
+ 'MAUGHAM',
+ 'SAINT',
+ 'JOAN',
+ 'BERNARD',
+ 'PLAYS',
+ 'PLEASANT',
+ 'BERNARD',
+ 'SHAW',
+ 'Philip',
+ 'MacDonald',
+ 'Rex',
+ 'THE',
+ 'SPEAKING',
+ '១NOS',
+ 'Y০ذ',
+ 'NOILvinday']
+['what',
+ 'is',
+ 'the',
+ 'title',
+ 'of',
+ 'the',
+ 'green',
+ 'book',
+ 'that',
+ 'is',
+ 'second',
+ 'from',
+ 'the',
+ 'bottom']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['EEER', 'B', '0615', 'iPo', 'HACKS', '0']
+['what',
+ 'kind',
+ 'of',
+ 'hacks',
+ 'are',
+ 'they',
+ 'viewing',
+ 'on',
+ 'the',
+ 'right',
+ 'monitor']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['WELCOME', 'TO', 'ARIZONA', 'PAPERS,', 'PLEASE', 'STOP', 'ALTO']
+['what', 'color', 'is', 'the', 'text', 'on', 'the', 'stop', 'sign']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['City', 'Centre', 'wia', 'st', 'Sudeaux', 'city:', 'O', 'WJ55HLG']
+['is', 'this', 'bus', 'going', 'to', 'city', 'center', 'today']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['snngnn',
+ 'TE',
+ '리네',
+ 'S',
+ 'Danger',
+ 'Demolition',
+ 'work',
+ 'Do',
+ 'not',
+ '3788',
+ 'in',
+ 'progress',
+ 'enter',
+ 'TY']
+['why', 'is', 'going', 'beyond', 'the', 'gate', 'dangerous']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['USA', '880', 'LFF', 'WLA4']
+['what', 'does', 'the', 'plate', 'say']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['iDisk',
+ 'Photos',
+ 'Camera',
+ 'Flickr',
+ '17',
+ 'M',
+ 'Notes',
+ 'Clock',
+ 'Calendar',
+ 'Settings',
+ 'Safari',
+ 'Calculator',
+ 'TweetD',
+ 'eck',
+ 'Quickoffice',
+ '23°',
+ 'ZeptoLiner',
+ 'Weather',
+ 'LookSee',
+ 'foursquare',
+ 'cOD',
+ '-',
+ 'Phone',
+ 'Mail',
+ 'Contacts',
+ 'Message']
+['what', 'is', 'the', 'temperature', 'according', 'to', 'the', 'weather', 'app']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['P', '63-82']
+['do', 'any', 'cars', 'have', 'an', 'etc', 'sticker']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['DRUPALCON', 'COPENHAGEN']
+['where', 'is', 'drupalcon', 'happening']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['THE', 'C', 'MLS', 'DICHTO', '9', 'A5', 'F513', 'CITY', 'ים', 'TGHIN']
+['what', 'number', 'is', 'the', 'player', 'in', 'red', "'", 's', 'jersey']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['5리020',
+ 'No',
+ 'te',
+ 'ignoro',
+ 'SOT',
+ '5',
+ 'Estoy',
+ 'do',
+ 'notas',
+ 'en',
+ 'hacien',
+ 'Everno']
+['what', 'does', 'the', 'white', 'card', 'say']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['DONALD', 'TANA', 'WANDRE', '$8.95', 'COLLECTED', 'POEMS']
+['what', 'is', 'name', 'on', 'the', 'top', 'of', 'the', 'page']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['TEMUSTER', 'MAGHINE', 'له', 'MUCPERI']
+['was',
+ 'the',
+ 'mystery',
+ 'machine',
+ 'van',
+ 'in',
+ 'the',
+ 'cartoon',
+ 'scooby',
+ 'doo']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['CRANBOURN', 'MANSIONS']
+['what', 'is', 'the', 'name', 'of', 'this', 'building']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['LacdAbe.', 'Unidade:', '190.83284231451', 'POSITIVO']
+['what', 'is', 'the', 'date', 'on', 'the', 'screen']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['R']
+['does', 'his', 'jacket', 'say', 'brooklyn']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Archeopteryx',
+ 'lithographica',
+ 'ichstadt,',
+ 'This',
+ '"reptile-bird"',
+ 'the',
+ 'skeleton',
+ 'but',
+ 'had',
+ 'feathers',
+ 'bird.',
+ 'had',
+ 'jaw,',
+ 'claws',
+ 'tail.',
+ 'breastbone',
+ 'indicates',
+ 'that',
+ 'habits',
+ 'were',
+ 'similar',
+ 'road',
+ 'runner',
+ 'with',
+ 'short',
+ 'gliding',
+ 'flights.',
+ 'original',
+ 'was',
+ 'found',
+ 'years',
+ 'was',
+ 'classified',
+ 'small',
+ 'bipedal',
+ 'dinosaur',
+ 'Compsognathus.',
+ 'When',
+ 'was',
+ 'taken',
+ 'outside',
+ 'wing',
+ 'front',
+ 'and',
+ 'hind',
+ 'limb',
+ 'were',
+ 'revealed.',
+ 'was',
+ 'finally',
+ 'recognized',
+ 'Its',
+ 'anatomy',
+ '60%',
+ 'that',
+ 'bipedal',
+ 'reptile,',
+ '10%',
+ 'similar',
+ 'bird,',
+ 'and',
+ '30%',
+ 'intermediate',
+ 'both.',
+ 'This',
+ 'species',
+ 'and',
+ 'recent',
+ 'discoveries',
+ 'in',
+ 'China',
+ 'have',
+ 'led',
+ 'some',
+ 'scientists',
+ 'to',
+ 'refer',
+ 'to',
+ 'birds',
+ 'as',
+ 'feathered',
+ 'dinosaurs.']
+['where', 'was', 'this', 'fossil', 'found']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Shiner', 'BOC', 'Microsoff']
+['who', 'makes', 'the', 'keyboard']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['HIGHWAY',
+ 'PATROL',
+ 'BR',
+ 'R-65ET',
+ 'CLM',
+ '240',
+ 'www.police.nsw.gov.al',
+ 'Police',
+ '131',
+ 'gencies',
+ '444']
+['what', "'", 's', 'the', 'police', 'number']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['75.-A',
+ 'PAPERBACK',
+ 'LIBRARY',
+ 'SCIENCE',
+ 'FICTION',
+ 'NOVEL',
+ '64',
+ '4-603',
+ 'A.E.',
+ 'Van',
+ 'Vogt',
+ 'The',
+ 'House',
+ 'That',
+ 'Stood',
+ 'Still',
+ 'Only',
+ 'the',
+ 'masked',
+ 'immortals',
+ 'could',
+ 'stop',
+ 'the',
+ 'destruction',
+ 'of',
+ 'earth.']
+['who', 'wrote', 'this', 'story']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['WWIиIEE',
+ 'WWCRKNG',
+ 'BFI',
+ 'FANS.,',
+ 'SOUND',
+ 'Mie',
+ 'mure',
+ "LET'S",
+ 'TALKTR',
+ 'TRL',
+ 'HT-RSC',
+ 'STI',
+ '242-0331',
+ '40']
+['what', 'is', 'the', 'player', "'", 's', 'number']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['BACARDI', 'MOJITO', 'SUPERIOR', 'IOSTEEL']
+['what',
+ 'type',
+ 'of',
+ 'beverage',
+ 'is',
+ 'printed',
+ 'on',
+ 'the',
+ 'bacardi',
+ 'bottle']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['E']
+['what', 'is', 'the', 'brand', 'of', 'this', 'watch']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['inFUSE',
+ 'FUSE',
+ 'inFl!',
+ 'inFUSE',
+ 'nFUSEO',
+ 'FAT',
+ 'FUSE',
+ 'Ba',
+ 'Bas',
+ 'in',
+ 'Vin',
+ 'Vine',
+ 'Vines',
+ '......',
+ 'Ginger',
+ 'Ging',
+ '..........',
+ 'Vines',
+ '.............',
+ 'Vinega']
+['what', 'kind', 'of', 'vinegar', 'is', 'there']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['citi',
+ 'FIELD',
+ "LET'S",
+ 'GO',
+ 'Mets',
+ 'HOSPITAL'
+'OCR_tokens'
+['Voll',
+ 'Damm',
+ 'Damm',
+ 'Voll',
+ 'Damm',
+ 'Damm',
+ 'Voll-Damm',
+ 'CERVEZA',
+ 'EXTRA']
+['what', 'brand', 'of', 'beer', 'is', 'this']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['BALESTE', '49']
+['what', 'is', 'the', 'players', 'last', 'name']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Pomer',
+ 'Monger',
+ '#IS',
+ 'PRESS',
+ 'START',
+ 'Licensed',
+ 'by',
+ 'Sega',
+ 'Enterprises',
+ 'Ltd']
+['what', 'video', 'game', 'is', 'this']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['', 'cmd']
+['is', 'this', 'on', 'the', 'right', 'or', 'left', 'keyboard']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['2']
+['what', 'is', 'the', 'jersey', 'number', 'of', 'the', 'blue', 'shirt']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['what', 'kind', 'of', 'box', 'is', 'this']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['S']
+['does', 'his', 'player', 'number', 'start', 'with', 'a', '5']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['dream', 'angels', 'dream', 'angels', 'desire', 'heavenly']
+['what', 'is', 'the', 'left', 'perfume', 'bottle']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['IGNET',
+ 'OWMOR',
+ 'MORANGIE',
+ 'MORANGIE',
+ 'EMORANGIE',
+ 'ISLAY',
+ 'SINGLE',
+ 'MAIT',
+ 'TCHWLS',
+ 'MLANDS',
+ 'ANTA',
+ 'HISKY',
+ 'SCOTCH',
+ 'WEN!',
+ 'NON',
+ 'MATURED',
+ 'SHERRY',
+ 'CASKS',
+ 'Batk.Rd',
+ 'seNe',
+ 'CAIKTIHE',
+ 'FRSTALLBOURBON',
+ 'BATONNS',
+ '55.6%at',
+ 'LONGHO',
+ 'BLAY',
+ 'CISTILLER',
+ 'SCCILA',
+ 'AND',
+ 'AGED',
+ '10']
+['what', 'brand', 'liquor', 'is', 'on', 'the', 'right']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['THE', 'NANJING', 'MASSACRE', 'History', 'and', 'Historiography', 'in']
+['what', 'massacre', 'is', 'the', 'book', 'about']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['о', 'нная', 'оллекция', '0%', '']
+['name',
+ 'one',
+ 'of',
+ 'the',
+ 'brands',
+ 'of',
+ 'wine',
+ 'that',
+ 'he',
+ 'is',
+ 'buying']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['SINEERING', 'NEWS', 'NEWS', 'NEWS']
+['what', 'kind', 'of', 'news', 'are', 'written', 'in', 'these', 'books']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Points',
+ 'Monterey',
+ 'Schmap!!',
+ 'Beyondthemap',
+ 'Schmap',
+ 'and',
+ 'Pods',
+ 'touch',
+ 'Company',
+ '.AT&T',
+ '1:05PM',
+ 'Photos',
+ 'm',
+ 'Submit',
+ 'TIME',
+ 'heashingtonost',
+ 'Heralderibune',
+ 'PCWORLD',
+ 'TechCrunch',
+ 'Schmap.com',
+ 'About',
+ 'TermsofUse',
+ 'ContactUs',
+ 'Protected',
+ '*100%']
+['what', 'is', 'the', 'name', 'of', 'the', 'site']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['W',
+ 'RITING',
+ 'LITERARY',
+ 'ANTHOLOGY',
+ 'N',
+ 'NEW',
+ 'YORK',
+ 'EDITED',
+ 'BY',
+ 'PHILLIP',
+ 'LOPATE',
+ '"Anexcellentanthology',
+ 'cellent',
+ 'Garrison',
+ 'Keillor',
+ 'The',
+ 'New',
+ 'York',
+ 'Times',
+ 'Book',
+ 'Review']
+['what', 'is', 'the', 'title', 'of', 'this', 'book']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['mdee', '2', 'அ', '', 'суиои', 'SOOW', 'геиг', '타L-2']
+['what', 'is', 'the', 'brand', 'of', 'the', 'camera', 'lens']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['EUROPE', 'LG', 'pkmus']
+['what', 'company', 'is', 'on', 'the', 'sign']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['this', 'is', 'glass']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['', '*', '00']
+['what',
+ 'time',
+ 'is',
+ 'displayed',
+ 'on',
+ 'the',
+ 'clock',
+ 'in',
+ 'the',
+ 'bottom',
+ 'row',
+ 'second',
+ 'from',
+ 'the',
+ 'right']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['0.000', '980']
+['does', 'the', 'remote', 'have', 'an', 'ok', 'button']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['3E1', '#**#', '50']
+['what',
+ 'price',
+ 'are',
+ 'the',
+ 'goods',
+ 'in',
+ 'the',
+ 'right',
+ 'of',
+ 'the',
+ 'food',
+ 'cabinet']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens']),
+ 'OX',
+ 'WS',
+ 'ללדד',
+ 'CONGRATULATIONS',
+ 'SURGERY',
+ 'R.A.',
+ 'DICKEY',
+ 'Official',
+ 'Hospital',
+ '43',
+ '20-GAME',
+ 'HOLULA',
+ 'SamsungGALAXYS',
+ 'WINNER',
+ 'YA',
+ 'ORIGINAL',
+ 'ORIGINAL',
+ 'PIRATES',
+ 'Mets',
+ '1014000X680',
+ '0',
+ '0',
+ 'Budweisek',
+ 'SOME',
+ 'GRAB',
+ 'Hertz',
+ 'Equipment',
+ 'Rental']
+['who', 'is', 'the', 'screen', 'congratulating']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+["Maker's",
+ 'SIV',
+ 'Mark',
+ 'BOURBON',
+ 'KENTUCKY',
+ 'STRAIGHT',
+ 'WHISKY',
+ 'HANDMADE',
+ 'Distilled',
+ 'aged',
+ 'Maker',
+ 'Mark',
+ 'Distillery',
+ 'bottled',
+ 'by',
+ 'the',
+ 'Star',
+ 'Hill',
+ 'arm,',
+ 'oretto,',
+ 'Ky.',
+ 'USA',
+ '70cl.',
+ '45%alc./vol.']
+['what', 'is', 'the', 'name', 'of', 'this', 'drink']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['', 'RAF', 'RESCUE']
+['whats',
+ 'written',
+ 'in',
+ '3',
+ 'letters',
+ 'on',
+ 'the',
+ 'side',
+ 'of',
+ 'the',
+ 'yellow',
+ 'helicopter']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Blogs',
+ 'History',
+ 'Goingout',
+ 'Shopping&',
+ 'Communities',
+ 'london',
+ 'blogspot.',
+ 'ondoncabb',
+ 'london',
+ 'route79',
+ 'journal']
+['what', 'is', 'the', 'first', 'website', 'name', 'on', 'the', 'page']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['what',
+ 'word',
+ 'is',
+ 'shown',
+ 'on',
+ 'the',
+ 'top',
+ 'of',
+ 'the',
+ 'left',
+ 'most',
+ 'screen']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['레હ',
+ 'GREAT',
+ 'HALL',
+ 'CEILING',
+ 'MODEL',
+ 'לន',
+ 'roduction',
+ 'designer',
+ 'Stuart',
+ 'Craig',
+ 'believes',
+ 'ofthe',
+ 'Great',
+ 'contained',
+ 'actual',
+ 'setof',
+ 'Great',
+ 'Ipstead,',
+ 'exposed',
+ 'raftersof',
+ 'soundstage.',
+ 'only',
+ "real'",
+ 'ceiling',
+ 'built',
+ 'model',
+ 'This',
+ 'sone',
+ 'whati',
+ 'technique',
+ 'camera',
+ 'model',
+ 'make',
+ 'appear',
+ 'heceiling',
+ 'smagical',
+ 'swirling',
+ 'clouds',
+ 'and',
+ 'twinkling',
+ 'created',
+ 'with',
+ 'computers',
+ 'during',
+ 'production.']
+['how', 'were', 'the', 'magical', 'clouds', 'made']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['', '', 'life', '2O', 'ם', '5', '등', 'S']
+['who', 'is', 'out', 'of', 'vietnam']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Kampa', '', 'mneur']
+['what', 'brand', 'socks', 'is', 'the', 'person', 'in', 'front', 'wearing']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['MEC', '', '2', '|I']
+['who', 'is', 'the', 'phone', "'", 's', 'manufacturer']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['that',
+ 'POLARIS',
+ 'seeking',
+ 'H.',
+ 'P.',
+ 'Lovecraft',
+ 'chamber',
+ 'another',
+ 'Sometimes.',
+ 'winking',
+ 'allsnothing',
+ 'onee',
+ 'oconvey',
+ 'overhead.',
+ 'quarter',
+ 'andhe',
+ 'angely',
+ 'neblc',
+ 'alkedab',
+ 'undert',
+ 'waning']
+['what', 'is', 'the', 'title', 'of', 'the', 'writing']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Le', 'ce', 'RODI', 'Go', 'Tiger']
+['what', 'do', 'the', 'advertisements', 'say', 'in', 'the', 'background']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['เปดแส้',
+ 'ประกาช์แห่มแพ่งั้น',
+ 'แกรนด์',
+ 'ไกมอนด์',
+ 'พลาช่า',
+ 'ประถูน้ำ',
+ '02-656-6333',
+ 'Party',
+ 'Time',
+ 'Getready',
+ 'to',
+ 'shine!',
+ 'भी',
+ 'Triumph',
+ '081-8247085']
+['what', 'is', 'advertised', 'on', 'the', 'billboard']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['VIDEOGAME',
+ 'EDCE',
+ 'NINTENDO',
+ 'SONY',
+ 'MICROSOFT',
+ 'HANDHELD',
+ 'COIN-OP',
+ 'ONLINE',
+ 'DEAD',
+ 'OR',
+ "JAPAN'S",
+ 'GAME',
+ 'INDUSTRY',
+ 'ALIVE?',
+ 'FACES',
+ 'ITS',
+ 'OWN',
+ 'SURVIVAL',
+ 'HORROR',
+ 'Tokyo',
+ 'Game',
+ 'Show',
+ 'special',
+ 'featuring',
+ 'Deadi',
+ 'Lost',
+ 'Planet2',
+ 'Okamiden',
+ 'Metal',
+ 'Gear',
+ 'Solid:',
+ 'Peace',
+ 'Walker,',
+ 'Ninety-Nin',
+ 'Nights',
+ 'Monster',
+ 'Hunter']
+['what', 'is', 'the', 'title', 'of', 'this']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['QUIT', 'BELLYACHING', 'IT', 'COULD', 'BE', 'HOTTER', 'ارOس']
+['does', 'it', 'tell', 'you', 'to', 'quit', 'bellyaching']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['LEFLEUR,', 'MISSEUR?', 'ALE', 'LiPS', 'OF', 'FAITH', 'ALC.', '%BYVOL']
+['what', 'is', 'the', 'name', 'of', 'the', 'beer']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['رامينا', 'MDO', 'الفاجر', 'ول', 'الطنول', '', 'S', '', 'RAMITA', '']
+['where', 'was', 'this', 'product', 'made']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['spinitof',
+ 'ECHT',
+ 'KOLNISCH',
+ 'COLOGY',
+ 'WISSHL',
+ 'moonf',
+ 'ORIGINA',
+ 'EAU',
+ 'DE',
+ 'No4711',
+ 'ค']
+['what', 'is', 'the', 'name', 'of', 'the', 'bottle']
+'OCR_tokens'
+['toldg', 'oper', 'ourcel', 'Movie', 'Show', 'drems', 'en', 'Elephants', 'G']
+['what', 'movie', 'is', '#', '1']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['OXCROFT']
+['what', 'is', 'the', 'first', 'number', 'on', 'the', 'bib', 'on', 'her', 'leg']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['msi', 'чхобок', 'msi', 'DLÍNAUDIO', 'O', 'mS']
+['what', 'is', 'the', 'top', 'left', 'key', 'on', 'the', 'keyboard']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['En', 'sL']
+['what', 'is', 'the', 'brand']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['what', 'time', 'is', 'it']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['A', 'BENTLEY', 'UNIVERSITY', 'Formidable', 'Fellows']
+['what', 'is', 'the', 'name', 'of', 'the', 'university', 'on', 'screen']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['YEAR', 'AGO', 'timehop', '2-20m', 'Z3พคาอด', 'YURXADO']
+['what', 'volumes', 'are', 'the', 'last', 'two', 'black', 'marvel', 'books']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['in', 'what', 'year', 'was', 'this', 'coin', 'produced']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['THE',
+ 'ACE',
+ '91061-0$',
+ '50',
+ 'WORLDS',
+ 'OF',
+ 'THEODORE',
+ 'STURGEON',
+ 'A',
+ 'collectior',
+ 'from',
+ 'one',
+ 'of',
+ "America's",
+ 'greatest',
+ 'science',
+ 'fiction',
+ 'talents']
+['how', 'much', 'does', 'it', 'cost', 'to', 'buy', 'this', 'book']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['NATAN', 'NATAN']
+['what', 'time', 'is', 'on', 'the', 'watch']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['LOX', 'SE', 'A226E', 'OYOTA', 'GUTHRIE', '24PITCHES', 'KC', '1-1', 'หยT']
+['how', 'many', 'points', 'does', 'kc', 'have']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['20', '3', 'DS', 'לם', "'st'"]
+['what', 'time', 'is', 'shown', 'on', 'the', 'watch']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Y', 'FAR', 'PLAC']
+['what',
+ 'letters',
+ 'form',
+ 'a',
+ 'word',
+ 'to',
+ 'the',
+ 'left',
+ 'of',
+ 'the',
+ 'man',
+ 'sitting',
+ 'down']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Litre',
+ 'Zucker',
+ '/Farine',
+ '-',
+ '900',
+ '700',
+ '800',
+ '700',
+ '600',
+ '400',
+ '200']
+['how', 'many', 'grams', 'of', 'flour', 'are', 'in', 'the', 'measuring', 'cup']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['DU', 'COR', 'Haand', 'Bryggeriet', 'PR', '1', '750']
+['this', 'is', 'drinks']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Elsie', 'Henderson', 'ALNCIAS', 'COOKCO']
+['what', 'is', 'the', 'name', 'of', 'the', 'woman', 'in', 'the', 'photo']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['GLG', '9:09', 'Friday,', 'October', '19', 'LG', 'optimus', 'L9']
+['what', 'brand', 'of', 'phone', 'is', 'this']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['certain',
+ 'basic',
+ 'valuable',
+ 'and',
+ 'the',
+ 'complex',
+ 'number',
+ 'the',
+ 'this',
+ 'general',
+ 'scheme',
+ '201h',
+ 'Unitary',
+ 'good',
+ 'position',
+ 'evolution:',
+ 'like',
+ '|DEAD),',
+ 'OFF)',
+ '22.4',
+ 'are',
+ 'now',
+ 'in',
+ 'already',
+ 'the',
+ 'Hilbert',
+ 'vectors',
+ 'some',
+ 'appropriate',
+ '(and',
+ 'space',
+ 'belonging',
+ 'inger',
+ 'all',
+ 'need',
+ 'stablish',
+ 'perh:',
+ 'between',
+ '(From',
+ 'state',
+ 'These',
+ 'appropriate',
+ '(and',
+ 'space',
+ 'sometin']
+['which', 'section', 'is', 'the', 'page', 'on']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['ESPRESSO', 'SUPERIOR', 'COFFEE', 'BEER', 'BR', 'STAR', 'BRE']
+['what', 'brewery', 'is', 'this', 'from']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['TRAPICHE', 'Manemakt', 'Gbator', 'MELODIAS', 'CHARDONNAY']
+['what', 'brand', 'of', 'wine', 'is', 'this']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['A', 'ટા']
+['what', 'number', 'is', 'closest']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['DER', 'TRIMOTO', 'AGENTE', '']
+['which',
+ 'letters',
+ 'are',
+ 'written',
+ 'at',
+ 'the',
+ 'bottom',
+ 'left',
+ 'of',
+ 'the',
+ 'left',
+ 'monitor']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['ALEXANDRI',
+ 'AB',
+ 'ALEXANDRO,',
+ 'Jurifperiti',
+ 'Neapolitani,',
+ 'GENIALIUM',
+ 'DIER',
+ 'UM',
+ 'LIBR&SE',
+ 'SEX,',
+ 'Cum',
+ 'integris',
+ 'Commentarils',
+ 'ANDREA',
+ 'TIRA',
+ 'DIONYSII',
+ 'GOTHOFREDI,]',
+ 'CHRISTOPHORI',
+ 'COLERI',
+ 'Aoceffere',
+ 'INDICES',
+ 'Capitunt',
+ 'ශ',
+ 'erborsm',
+ 'locuplengon',
+ 'TOMU',
+ 'BAR',
+ 'NDO',
+ 'LUGDUNI',
+ 'BATAVORUM,',
+ '18',
+ 'Ex',
+ 'Officina',
+ 'H',
+ 'ACKIANA',
+ 'clo',
+ 'Io',
+ 'LXXII.']
+['what', 'is', 'the', 'roman', 'numeral', 'at', 'the', 'bottom']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['CUPS', 'oz', '16', '12']
+['what', 'two', 'measurements', 'can', 'this', 'cup', 'measure']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['VIKING',
+ 'COURT',
+ 'Mon',
+ 'Thu:',
+ '7am',
+ '7pm',
+ 'Fri:',
+ '7am',
+ '3pm',
+ '#greens',
+ 'sbarro',
+ 'CAZY',
+ 'Mon-Thu',
+ '10:30am',
+ '4pm',
+ 'Mee-Datim.',
+ 'Fri',
+ '0:30am',
+ '3pm',
+ 'GRIAAE',
+ 'freshens',
+ 'WORKS',
+ 'Mon-',
+ '7am-3pm',
+ 'Purchase',
+ 'MamiyMnr',
+ 'PSU',
+ 'Dining',
+ 'Mon-Thu']
+['what',
+ 'are',
+ 'some',
+ 'of',
+ 'the',
+ 'restaurants',
+ 'in',
+ 'the',
+ 'food',
+ 'court']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['"KARAKUCK',
+ '카트',
+ 'WAl',
+ 'BRENERIES',
+ 'ASAHII',
+ '1S.H',
+ 'UPER',
+ '"DRY',
+ 'ASA',
+ 'BREWED',
+ 'HE',
+ 'ASAHI',
+ 'BEER',
+ 'BYUSING',
+ 'ED',
+ 'HAS',
+ 'BREWED',
+ 'HE',
+ 'TAY',
+ 'SATINS',
+ 'CAN',
+ 'ENJOY',
+ 'YOU',
+ 'CAN',
+ 'ENJOY',
+ '거다',
+ 'THE']
+['what', 'kind', 'of', 'drink', 'is', 'in', 'the', 'can']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['N', 'DWORTH', 'รאח']
+['what', 'brand', 'is', 'the', 'bat']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['๑០000๐0',
+ 'CHEERF',
+ 'POLLY',
+ 'BEN',
+ 'TO-DA',
+ 'AND',
+ 'ONO',
+ 'AN',
+ 'N',
+ 'HUR',
+ 'TRUSTFU',
+ 'ORTHO',
+ 'LONG',
+ 'ELLOIS',
+ 'WALL',
+ 'TO-MORRO',
+ 'SANGSTE',
+ 'TEF']
+['who', 'wrote', 'ben', 'hur']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['COOKIE', 'HOT', 'COFFEE', 'chocolate', 'chip', 'ICE', 'COLD', 'MILK']
+['what', 'hot', 'beverage', 'is', 'sold', 'here']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['what', 'sweetener', 'brand', 'is', 'in', 'the', 'glass', 'jar']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['COcO', 'EAU', 'DE', 'OILETTE', 'ANEL']
+['which', 'brand', 'is', 'this', 'perfume']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Ryw', 'BAR']
+['what', 'is', 'the', 'name', 'of', 'this', 'business']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['VA', '2679043', 'MAY', 'VIRGINIA', 'VA', '271877', 'SAY', 'THNX']
+['what', 'state', 'is', 'the', 'license', 'plate', 'from']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['TOP',
+ 'SCORES',
+ 'OF',
+ 'THE',
+ 'WEEK',
+ 'GTB',
+ 'POD',
+ 'PLI',
+ '2',
+ '26.',
+ 'KDE',
+ 'PLI',
+ 'POT',
+ 'PLI',
+ '27.',
+ '29.',
+ '30',
+ 'PL2',
+ '31.',
+ '32',
+ 'PLI',
+ '21.',
+ '33',
+ '10',
+ '22',
+ '3']
+['what', 'team', 'has', '16', 'points']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['HUDSON',
+ 'MEMORIAL',
+ 'STADIUM',
+ 'Akron',
+ "Children's",
+ 'Hospital',
+ 'HUDSON',
+ 'GUEST',
+ '3',
+ '1',
+ 'CLOCK',
+ '0:00',
+ 'Gardenso',
+ 'Western',
+ 'Reserve',
+ 'FOUNDATION.for',
+ 'Patriotism',
+ 'KGK',
+ 'JUMP',
+ 'START',
+ 'CuyahogaFalls',
+ '*NEOPAT.ORG',
+ 'SPORTS']
+['what', 'is', 'the', 'name', 'of', 'the', 'stadium']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['EMBASSY', 'ןm', 'HME']
+['what', 'organization', 'is', 'represented', 'under', 'the', 'panda']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['nZaM', 'bq']
+['does',
+ 'the',
+ 'phone',
+ 'on',
+ 'the',
+ 'left',
+ "'",
+ 's',
+ 'name',
+ 'end',
+ 'in',
+ '"',
+ 'u',
+ '"']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['PAMPANGO',
+ 'TABIQUE',
+ 'PAI',
+ 'PAN',
+ 'O',
+ '(from',
+ 'Sp.',
+ 'Tabique',
+ 
+'OCR_tokens'
+['Are',
+ 'you',
+ 'made',
+ 'of',
+ 'copper',
+ 'and',
+ 'Tellurium?',
+ 'Because',
+ "you're",
+ '29',
+ '52',
+ 'Cu',
+ '3',
+ 'Te',
+ 'copper',
+ 'Tellurium',
+ '63546',
+ '127.',
+ '60',
+ 'This',
+ 'mage',
+ 'was',
+ 'uploadedto',
+ 'Postmemes.com']
+['what', 'is', 'the', 'symbol', 'for', 'copper']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['FUN', 'SM2']
+['what', 'is', 'the', 'bottom', 'word', 'on', 'his', 'shirt']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Ripesada',
+ 'Jose',
+ 'Cuervo',
+ 'JACK',
+ 'DANIELS',
+ 'CHIVAS',
+ 'REGAL',
+ 'Especial.',
+ '있을',
+ 'Jennessee',
+ 'SCOTCH',
+ 'WHISKEY',
+ '#OPEXXEIO',
+ '40%Vol',
+ 'JACKDANIEL']
+['what', 'state', 'is', 'jack', 'daniels', 'made', 'in']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['RODDA', 'Corena']
+['what', 'advertisers', 'are', 'there']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['STOP']
+['what', 'does', 'the', 'sign', 'say']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Airpor',
+ 'Business',
+ 'Centre',
+ '거',
+ 'Plymouth',
+ 'stem',
+ 'back',
+ 'k2business',
+ 'una',
+ 'group',
+ 'C',
+ 'Hal',
+ 'crumbrubber']
+['what', 'business', "'", 's', 'are', 'located', 'here']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['PITCHERS', 'VENORES', 'UEJAYS']
+['who', 'are', 'the', 'blue', 'jays', 'playing']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['CYCLO']
+['what', 'team', 'name', 'is', 'the', 'little', 'guy', 'wearing']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['WATER&LIGH', 'POWER!', 'Autarraphs', 'aphs', 'Tugno']
+['what', 'number', 'is', 'the', 'pitcher', 'wearing', 'on', 'his', 'jersey']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['ப', '2', 'M', 'M', 'SIE', 'COUMT']
+['what', 'is', 'on', 'their', 'sashes']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['ciona',
+ 'ment',
+ 'ideasrso',
+ 'podria',
+ 'cn',
+ 'Es,',
+ 'vOS)',
+ "otro'",
+ 'capacidad',
+ 'centrar',
+ 'donde',
+ 'os',
+ 'mutuo',
+ 'dialogo',
+ 'hombro',
+ '(usted',
+ 'uictudes',
+ 'Alli',
+ 'proceso',
+ 'personales',
+ 'ogicos,',
+ 'intercambio',
+ 'cara',
+ 'tico',
+ 'lingüista',
+ 'más',
+ 'tradicionals',
+ 'incluso,',
+ 'supera',
+ 'sicosocial',
+ 'que',
+ 'incluso,',
+ 'supera',
+ 'en',
+ 'situaciones',
+ 'mpliamente',
+ 'dadas',
+ 'cara',
+ 'ndo',
+ 'dos',
+ 'experiencias',
+ 'cada',
+ 'personas',
+ 'acuerdan',
+ 'notable',
+ 'dialogar',
+ 'estilisticos',
+ 'mpliamente',
+ 'dadas',
+ 'scedores',
+ 'una',
+ 'de',
+ 'ellas',
+ 'una',
+ 'subrayados',
+ 'aspectos',
+ 'otro',
+ 'su',
+ 'peculiar',
+ 'manera',
+ 'de',
+ 'ver',
+ 'de',
+ 'una',
+ 'maginar;',
+ 'sus',
+ 'prejuicios',
+ 'personal',
+ 'de',
+ 'las',
+ 'cosas,',
+ 'dispuestos',
+ 'expectativa',
+ 'conversar',
+ 'juntas6',
+ 'cncuentro',
+ 'entre',
+ 'compat-']
+['what',
+ 'is',
+ 'the',
+ 'title',
+ 'of',
+ 'the',
+ 'bottom',
+ 'half',
+ 'of',
+ 'this',
+ 'page']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+["What'",
+ 'your',
+ '*훈농',
+ 'lambda',
+ 'favorite',
+ 'language?',
+ 'គ',
+ '?',
+ 'S',
+ 'Puby',
+ 'love',
+ 'Haskell',
+ 'Dynaah.na',
+ 'Ruby!',
+ 'Yasu',
+ 'Vala',
+ 'AyA',
+ 'Pytbon',
+ 'Pythn3',
+ 'rjd',
+ 'Qt',
+ '(.GML)',
+ 'Kisportsz',
+ 'ABAp',
+ 'x86',
+ 'Npak',
+ 'Myglig',
+ 'elani',
+ 'SOL',
+ 'Lisp',
+ 'Elip',
+ 'Clojure',
+ 'Jo.va',
+ 'oČam',
+ 'Salak',
+ 'Lskall',
+ 'per/',
+ ')22.๓1})',
+ 'இபபார',
+ 'tapp',
+ 'OC.-l']
+['what', 'is', 'the', 'paper', 'asking', 'about']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Price',
+ '98',
+ 'LUNCHBOX',
+ 'FAVORITE!',
+ 'Str',
+ 'VORITE',
+ 'YOaHวND',
+ 'LIHOAY',
+ 'ACR',
+ 'A-66']
+['is', 'that', 'their', 'lunchbox', 'favorite']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['EXLTWN', 'BEAVERTOW']
+['what', 'was', 'the', 'name', 'of', 'the', 'brewery']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['CITY', 'OF', 'BALLARD']
+['is', 'city', 'of', 'ballard', 'in', 'europe']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['125',
+ 'YEARS',
+ 'OF',
+ 'BRUICHLADDICH',
+ 'SINGLE',
+ 'MALT',
+ 'SCOTCH',
+ 'WHISKY',
+ 'pry',
+ '7ech',
+ 'PRUICA',
+ 'ADDICK',
+ '1',
+ 'SINGLE',
+ 'MAA',
+ 'A',
+ 'TRULY',
+ 'MASTER',
+ 'STILLER',
+ 'JIM',
+ 'MCEWAN',
+ 'BOTT',
+ 'XCEPTIONAL',
+ 'ING',
+ 'CRE',
+ 'TED',
+ 'BY',
+ 'ALC./VOL']
+['what', 'kind', 'of', 'drink', 'is', 'in', 'the', 'image']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['FOR',
+ 'CINDERELL',
+ 'STAMP',
+ 'Itlooks',
+ 'ostage',
+ 'stamp,',
+ 'swithout',
+ 'name',
+ 'refers',
+ 'toprinted',
+ 'labels.',
+ 'ineluding',
+ 'stamps,',
+ 'heval',
+ 'fairatale',
+ 'whowas',
+ 'the',
+ 'cinderella',
+ 'stamps',
+ 'normally',
+ 'utof',
+ 'estamp',
+ 'logue.',
+ 'Ms']
+['what', 'is', 'c', 'for']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])'Pampa',
+ 'thin',
+ 'wall',
+ 'made',
+ 'interlaced',
+ 'uzon)',
+ 'pro',
+ 'ince',
+ 'given',
+ 'coating',
+ 'of',
+ 'ime',
+ 'mixed',
+ 'with',
+ 'sand;',
+ 'used',
+ 'as',
+ 'pieces',
+ 'of',
+ 'wood',
+ 'and',
+ 'bamboo',
+ 'partition',
+ 'wall',
+ 'and',
+ 'ven.in',
+ 'such',
+ 'as',
+ 'the',
+ 'second',
+ 'the',
+ 'upper',
+ 'reaches',
+ 'From',
+ 'story',
+ 'of',
+ 'convento.',
+ 'building,',
+ 'Regalado',
+ 'Philippines']
+['what', 'does', 'the', 'tag', 'say']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['DS',
+ 'download',
+ '1554',
+ 'O',
+ '#무=#91)',
+ '초했호했',
+ 'Android',
+ '(Phone/Tab)',
+ '3*',
+ '2비토1학화6호',
+ 'DS',
+ 'download',
+ 'Synolagy',
+ 'T',
+ 'Symology',
+ 'Cepright',
+ '2012',
+ 'Symplogy']
+['when', 'was', 'this', 'software', 'copyrighted']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['balioonworks.co.uk',
+ 'Finduson',
+ 'Facebook',
+ 'Followusor',
+ 'twitter',
+ 'You',
+ 'Tube',
+ 'Linkedi',
+ 'in',
+ 'KXI2',
+ 'YUB',
+ '1จ',
+ "London's",
+ 'Leading',
+ 'Balloon',
+ 'Delivery',
+ 'Company']
+['what', 'product', 'does', 'this', 'vehicle', 'deliver']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['"KARAKUCK',
+ '카트',
+ 'WAl',
+ 'BRENERIES',
+ 'ASAHII',
+ '1S.H',
+ 'UPER',
+ '"DRY',
+ 'ASA',
+ 'BREWED',
+ 'HE',
+ 'ASAHI',
+ 'BEER',
+ 'BYUSING',
+ 'ED',
+ 'HAS',
+ 'BREWED',
+ 'HE',
+ 'TAY',
+ 'SATINS',
+ 'CAN',
+ 'ENJOY',
+ 'YOU',
+ 'CAN',
+ 'ENJOY',
+ '거다',
+ 'THE']
+['what', 'brewery', 'makes', 'this', 'beer']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['82690', '1อ', 'The', 'Mountain', 'Home', 'Phoenicia,', 'N.', 'Y.']
+['what', 'state', 'is', 'this', 'house', 'in']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Time',
+ 'Billing',
+ 'Date',
+ 'ID',
+ 'Hrs',
+ 'Note',
+ 'EVIDENCE',
+ 'Ho:)',
+ '7/11',
+ '0.2',
+ 'Adams',
+ 'to',
+ 'checks',
+ '7/11',
+ '2001-',
+ '-2040',
+ 'To',
+ 'Ralph',
+ 'Jones',
+ '7/10',
+ '01-2040',
+ 'Presented',
+ 'Smi',
+ '50',
+ '7/10',
+ '2001-2040',
+ 'Received',
+ 'fromhu',
+ '7/10',
+ '2001-0196',
+ 'Reody',
+ 'for',
+ 'Tuesdc',
+ '7/9',
+ 'XADMIIN',
+ '1.5',
+ 'Confir',
+ 'receip',
+ '20',
+ '7/8',
+ '-0054',
+ 'Sent',
+ 'Jomes',
+ 'Tvi',
+ '25',
+ 'New',
+ '*..*.......',
+ 'Erase']
+['what', 'is', 'one', 'of', 'the', 'dates', 'listed']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['PRO', 'TREK', '21:4754', 'MS', '11', '6-17', 'LIGHT']
+['whats', 'the', 'time', 'on', 'the', 'watch']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Information']
+['what', 'is', 'printed', 'above', 'the', 'three', 'panels']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Harolds', 'RESTAURANT', 'DOPTEC']
+['what',
+ 'is',
+ 'the',
+ 'name',
+ 'of',
+ 'the',
+ 'restaurant',
+ 'on',
+ 'the',
+ 'billboard']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Fit', 'Heart', 'Rate', 'Keep']
+['what', 'does', 'the', 'watch', 'monitor']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['e', 'WDOVER', '2']
+['what', 'number', 'is', 'on', 'the', 'white', 'outfit']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['RADFORD',
+ '00.0',
+ 'UNC',
+ 'I',
+ '58',
+ '3',
+ 'T.O.L.',
+ '110',
+ 'PLY',
+ 'FL',
+ 'PTS',
+ 'PLY',
+ 'FL',
+ 'PTS',
+ '11',
+ '15',
+ 'NCA',
+ '0',
+ 'ස',
+ 'NCAA',
+ '2',
+ '8',
+ 'FLS']
+['which', 'team', 'is', 'leading']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['BEETS',
+ '990',
+ 'BCARGE',
+ 'TECE',
+ 'Wegmans',
+ 'MECaER',
+ 'PEAS',
+ 'PEAS',
+ 'PEAS',
+ 'No_Salt_Add',
+ 'NoŞaltAd',
+ 'No_Salt_Addrd',
+ 'M',
+ 'PEAS',
+ 'wegmans',
+ 'PEAS',
+ 'PEAS',
+ '@SaItAdd',
+ 'PEAS',
+ 'PEAS',
+ '62%']
+['whats', 'the', 'content', 'of', 'the', 'cans']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['ONT', 'LORR']
+['the', 'clock', 'says', 'to', 'don', "'", 't', 'what']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['#0', 'ken', 'EL', '1873', 'VOL-CATI', 'VISTEL', 'MAN', 'ALC.5%/']
+['which', 'is', 'the', 'can', 'of', 'heineken']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['BICALPTUS']
+['what',
+ 'type',
+ 'of',
+ 'fruit',
+ 'is',
+ 'written',
+ 'on',
+ 'the',
+ 'boxes',
+ 'stacked',
+ 'in',
+ 'the',
+ 'corner']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['JET',
+ 'STAR',
+ 'IMPERIAL',
+ 'IMPERIAL',
+ '115',
+ 'IBUS',
+ '¡IPA',
+ '8.1%',
+ 'ALC/VOL',
+ '1',
+ 'PINT',
+ 'FL.',
+ 'INDIA',
+ 'PALE',
+ 'ALE']
+['what', 'is', 'the', 'name', 'on', 'the', 'drink']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['ROYAL', 'YALAIRFORCE']
+['what', 'air', 'force']
+'OCR_tokens'
+['PAUL',
+ 'AND',
+ 'WRIGWT',
+ 'OF',
+ 'THE',
+ 'GOD',
+ 'CANTWFULNE',
+ 'FAITHFULNESS',
+ 'PAUL',
+ 'AND',
+ 'N.T.',
+ 'WRIGHT',
+ 'GOD',
+ 'THE']
+['what', 'is', 'the', 'title', 'of', 'the', 'books']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['NET4AW', '1.ccceccoo', 'cacM', 'MIDWESTAM']
+['what',
+ 'area',
+ 'of',
+ 'the',
+ 'country',
+ 'does',
+ 'this',
+ 'plane',
+ 'most',
+ 'likely',
+ 'connect']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['סוד',
+ 'NVפIHวเพ',
+ 'Mackob',
+ '$6ං',
+ 'ANN',
+ 'ARBOR',
+ 'Ready-to-Wea',
+ 'Wear',
+ 'Sectio',
+ 'สaายV',
+ 'ANVdWOว',
+ 'ON',
+ 'YOยH',
+ 'NNV']
+['what', 'company', 'is', 'this', 'from']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['KICKAPOO', 'Joy', 'JUICE', 'Beci', '500ml']
+['what', 'does', 'this', 'drink', 'have', 'less', 'of']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['AAM',
+ 'ReA',
+ 'ပလပြ်',
+ 'RAAM',
+ 'Rගරි',
+ 'RAAM',
+ 'சிယ',
+ 'Fனර',
+ 'RAAM',
+ 'ජහசර',
+ 'RARM',
+ 'சහි',
+ 'RAAM',
+ 'Aใក',
+ '1e',
+ 'BASEIERC',
+ 'R.',
+ 'RAAM',
+ 'අပ',
+ 'RAAM',
+ 'අගරි',
+ 'RAAM',
+ 'හිහසරී',
+ 'මරි',
+ 'RAAM',
+ 'คि',
+ 'ACRRCA',
+ 'මரරි',
+ 'RAAM',
+ 'AIER',
+ 'සහසි',
+ 'Dි',
+ 'MERTCA',
+ 'AME',
+ 'MEF',
+ 'B',
+ 'RAAM',
+ 'ජහරි',
+ 'සිහරි',
+ 'හ']
+['what', 'is', 'written', 'across', 'the', 'women', "'", 's', 'chest']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['TECH', 'TEC/', 'TECH', 'ECH']
+['what', 'team', 'is', 'this']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['ArSenal', 'PAVEL', 'Thomson']
+['what', 'is', 'one', 'of', 'the', 'brands', 'on', 'the', 'stand', 'walls']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['CUPS', 'oz', '16', '12']
+['how', 'many', 'cups', 'can', 'this', 'measuring', 'cup', 'hold']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['', 'Facker-Psc', 'mนวรe', 'Deisse', 'Pichor', 'Ffefe']
+['what', '´', 's', 'the', 'brand', 'of', 'the', 'wine']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['IMAN', 'VAON', 'WJSONVN', '08t']
+['what', 'model', 'is', 'this', 'machine']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['tin',
+ 'Darefter',
+ 'allmint',
+ 'Det',
+ 'agerer',
+ 'uthyrn',
+ 'denna',
+ 'antligen',
+ 'dom',
+ 'Kara',
+ 'hans',
+ 'Bennet',
+ 'ingenting.',
+ 'der?',
+ 'utbrast',
+ 'ingenting',
+ 'Men',
+ 'här',
+ 'Bennet',
+ 'berättade',
+ 'svarade',
+ 'veta',
+ 'jag',
+ 'hustru',
+ 'otiligt.',
+ 'beratta',
+ 'det',
+ 'henne',
+ 'att',
+ 'avsloja',
+ 'hemlig',
+ 'ut',
+ 'Netherfield',
+ 'norra',
+ 'for',
+ 'England',
+ 'toclnondes',
+ 'inte',
+ 'for',
+ 'overe',
+ 'siger',
+ 'genast',
+ 'kom',
+ 'fore',
+ 'sista',
+ 'dlytta',
+ 'skalle',
+ 'Komma']
+['what', 'is', 'the', 'first', 'word', 'on', 'the', 'right', 'page']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['F11', 'Insert', '3', 'End', 'Delete', 'Enter', '{', '1']
+['what', 'button', 'are', 'they', 'pressing']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['#T']
+['what', 'is', 'the', 'letter', 'on', 'the', 'mug']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['MensHeal',
+ 'Return',
+ 'Take',
+ 'Takea',
+ 'chat',
+ 'aEaBreak',
+ 'Special:',
+ 'Loveit',
+ 'Dove',
+ 'OS',
+ 'Lewi',
+ 'bliss',
+ 'bliss',
+ 'Alltop',
+ 'All',
+ 'the',
+ 'topics,',
+ 'all',
+ 'the',
+ 'time.',
+ '4girt',
+ 'ELECTIO',
+ '£500',
+ 'PEAOO']
+['what',
+ 'is',
+ 'the',
+ 'name',
+ 'of',
+ 'the',
+ 'blue',
+ 'magazine',
+ 'at',
+ 'the',
+ 'top',
+ 'left']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['HOUR', '1HOUR', 'Srater']
+['how', 'many', 'hours', 'can', 'you', 'park']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['1EXAS', 'EXAS', 'M']
+['what', 'state', 'does', 'the', 'man', 'play', 'for']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['The',
+ 'Great',
+ 'e',
+ 'ican',
+ 'Lager',
+ 'WELCOME',
+ 'TO',
+ 'Mets',
+ 'THE',
+ 'HOLDERS',
+ 'TICKET',
+ 'PLAN',
+ 'SUNDAY']
+['what', 'ind', 'of', 'lager', 'is', 'being', 'advertised']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['플트트트불를', 'norfolkline.com']
+['what', 'is', 'the', 'last', 'name', 'on', 'the', 'front', 'side']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['VA', '2679043', 'MAY', 'VIRGINIA', 'VA', '271877', 'SAY', 'THNX']
+['what', 'does', 'the', 'tag', 'tell', 'you', 'to', 'do']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['SB32', 'n', 'mc', '3.14159265', 'm-', '19:12', 'mr']
+['what', 'time', 'is', 'it']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['16']
+['what', 'number', 'is', 'displayed', 'on', 'the', 'mascots', 'chest']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['#', '9-1', '9-1']
+['when', 'is', 'this', 'being', 'aired']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['lommie',
+ 'slashat.se',
+ 'MacBookAir',
+ 'BUOEILT',
+ 'CELEEETTT',
+ 'DTTTTT',
+ 'HORCTAD']
+['who', 'manufactured', 'the', 'laptop', 'used', 'here']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['QUIT', 'BELLYACHING', 'IT', 'COULD', 'BE', 'HOTTER', 'ارOس']
+['what', 'could', 'it', 'be']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['cdocca']
+['is',
+ 'there',
+ 'a',
+ 'letter',
+ 'e',
+ 'showing',
+ 'at',
+ 'the',
+ 'top',
+ 'of',
+ 'the',
+ 'coin']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['B']
+['what', 'is', 'the', 'letter', 'on', 'the', 'jersey']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Installation',
+ '&',
+ 'Licensing',
+ 'M',
+ 'Administration',
+ 'Practical',
+ 'LSF',
+ '7.0',
+ 'Installation&',
+ 'Licensing',
+ 'บน']
+['what', 'is', 'the', 'title', 'of', 'the', 'power', 'point']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+["'J.K.",
+ "Rowling's",
+ 'crime',
+ 'debut',
+ '[writing',
+ 'as',
+ 'Robert',
+ 'Galbraith]',
+ 'beguilingly',
+ 'shows',
+ 'that',
+ 'she',
+ 'can',
+ 'renounce',
+ 'magic',
+ 'and',
+ 'yet',
+ 'be',
+ "magical'",
+ 'SUNDAY',
+ 'TIMES',
+ 'ROBERT',
+ 'GALBRAITH',
+ 'THE',
+ "CUCKOO'S",
+ 'CALLING']
+['who', 'is', 'the', 'author', 'of', 'this', 'book']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['EXIT',
+ '308',
+ 'EXIT',
+ '309',
+ 'WEST',
+ 'Reno',
+ 'SLC',
+ "Int'l",
+ '600',
+ 'EXIT',
+ '310',
+ 'Airport',
+ 'MILE',
+ '1000',
+ 'N',
+ '21/4',
+ 'MILES']
+['what', 'is', 'the', 'speed', 'limit', 'for', 'the', 'exit']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['SR', 'ng', 'oli', 'Ringdolt', 'atomic']
+['who', 'is', 'this', 'pic', 'credited', 'to']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['LA', 'RGE', 'TYPE']
+['what',
+ 'are',
+ 'the',
+ 'letters',
+ 'displayed',
+ 'on',
+ 'the',
+ 'top',
+ 'of',
+ 'the',
+ 'aisle',
+ 'in',
+ 'the',
+ 'library']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['3', 'JICE']
+['what', 'date', 'is', 'displayed', 'on', 'the', 'clock']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Zone', 'Recycling', 'deargiass', 'C']
+['what', 'does', 'the', 'red', 'sign', 'say']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['10', '9', 'TIME', 'DERUrERE', 'TIME']
+['what', 'is', 'written', 'beneath', 'the', 'clock']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Estrella',
+ 'TRADICIOX',
+ 'Damm',
+ 'GERVECERA',
+ 'Premtum',
+ 'QUALITY',
+ 'LAGE',
+ 'R']
+['what', 'year', 'is', 'shown']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['APÉ',
+ 'ROL',
+ 'PEROL',
+ 'PERGL',
+ 'APEROL',
+ 'APEROL',
+ 'PEROL',
+ 'RO',
+ 'pert',
+ 'meri',
+ 'MOUrUR',
+ 'HQUEUR',
+ 'Aperitin',
+ 'LOUrUR',
+ 'BARBIE',
+ 'BARBIE',
+ 'BAR']
+['what', 'is', 'the', 'name', 'of', 'this', 'beer']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['M', 'B', '"']
+['what', 'letter', 'is', 'hanging', 'around', 'the', 'man', "'", 's', 'neck']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['SIFROPLZENECKY',
+ 'KING',
+ 'OF',
+ 'SPIRIT',
+ 'iBSİNTH',
+ 'KING',
+ 'SPIRITS',
+ 'YOC',
+ '10%VOL.',
+ 'oF',
+ 'SPIRITS',
+ 'KING',
+ 'OF',
+ 'SPIRITS']
+['what', 'is', 'the', 'name', 'of', 'this', 'beverage']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['LOMES', 'LOWES', '58', 'TRESH', 'MEAT', 'POULTRY', 'PORK']
+['what', 'aisle', 'are', 'they', 'in']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['BYAY',
+ 'Mii',
+ 'Internet',
+ 'Channel',
+ 'MARIO',
+ 'BROS.',
+ 'WORLD',
+ 'G6O',
+ 'Channel',
+ 'News',
+ 'Channel',
+ 'Nintendo',
+ 'Channel',
+ '9:25',
+ 'AM',
+ 'Wed',
+ '3/17',
+ 'Pioneer']
+['what', 'day', 'of', 'the', 'week', 'is', 'on', 'the', 'tv']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Rock', 'the', 'Stripes', 'E', 'Rock', 'the', 'Stripes', 'RealEstateZebra']
+['what', 'is', 'the', 'name', 'written', 'on', 'the', 'black', 'shirt']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['N96',
+ 'WebvM',
+ 'QA',
+ 'ম.',
+ '11:51',
+ 'AM',
+ 'WebVM',
+ 'This',
+ 'Web',
+ 'browser',
+ 'has',
+ '7',
+ 'plug-',
+ '(sanitycheck)',
+ 'Aplix',
+ 'ins',
+ 'installed:',
+ 'Shockwave',
+ 'Flash',
+ 'SVGT',
+ 'Plugin',
+ 'Audio',
+ 'Video',
+ 'Real',
+ 'Player',
+ 'Plugin',
+ 'Webbrowser',
+ 'has',
+ 'plug',
+ 'installed:',
+ 'Audio',
+ 'Video',
+ 'Real',
+ 'Player',
+ 'gears',
+ 'Plugin',
+ 'Audio',
+ 'Video',
+ 'eal',
+ 'Player',
+ 'Plugin',
+ 'Browser',
+ 'System',
+ 'Info',
+ 'Plugin',
+ 'Options',
+ 'Back',
+ 'NOKIA']
+['what', 'brand', 'is', 'the', 'phone', 'on', 'the', 'right']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['1967',
+ 'א-שייח',
+ 'שארם',
+ 'כיבוש',
+ 'TAKING',
+ 'EL',
+ 'SHEIKH',
+ 'June',
+ '7th',
+ '1967',
+ 'סיני',
+ 'ציהא',
+ 'h3tordeboante',
+ 'ערבהסעודית']
+['what',
+ 'is',
+ 'the',
+ 'first',
+ 'word',
+ 'of',
+ 'the',
+ 'second',
+ 'line',
+ 'of',
+ 'yellow',
+ 'text']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['CLASSICO',
+ 'VIN',
+ 'SANTO',
+ 'DEL',
+ 'CHIANTI',
+ 'CASTELLOMBRO',
+ 'BROIO',
+ '2006',
+ 'RICAS',
+ 'BAsOu']
+['what', 's', 'the', 'name', 'of', 'the', 'beverage']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['intel', 'PgUp', 'PgDn', 'öe', 'aa', 'AltGr']
+['what',
+ 'does',
+ 'the',
+ 'first',
+ 'key',
+ 'to',
+ 'the',
+ 'right',
+ 'of',
+ 'the',
+ 'space',
+ 'bar',
+ 'say']
+
+'OCR_tokens'
+['Coffee!', 'MILK', 'โงโය', 'Gone']
+['what', 'drink', 'is', 'featured', 'on', 'the', 'bottom', 'right']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['which',
+ 'letter',
+ 'is',
+ 'on',
+ 'the',
+ 'top',
+ 'right',
+ 'corner',
+ 'of',
+ 'the',
+ 'cd',
+ 'rack']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['UNITED',
+ 'STATES',
+ 'DEPARTMENT',
+ 'o',
+ 'JUSTICE',
+ 'enESPAÑOL',
+ 'RESOURCE',
+ 'Home',
+ 'Briefing',
+ 'Room',
+ 'JusticeNews',
+ 'JUSTICENEWS',
+ 'OfficeofPublicAffairs',
+ 'FORIMMEDIATER',
+ 'Thursday,',
+ 'December',
+ 'Attorney',
+ 'General',
+ 'Holder',
+ 'Directs',
+ 'Identity',
+ 'Under',
+ 'Employment',
+ 'Claims',
+ 'New',
+ 'Memo',
+ 'Justice',
+ 'andu.',
+ 'Attorneys',
+ 'Attorney',
+ 'General',
+ 'announced',
+ 'theposition',
+ 'litigation',
+ 'protection',
+ 'ftheCivi',
+ 'oclaims',
+ 'imination',
+ "individual'",
+ 'gender',
+ 'transgender',
+ 'Departmen',
+ 'nitedSta',
+ 'prohibition',
+ 'discriminatio',
+ 'transgende',
+ 'reversinga',
+ 'previous',
+ 'Department',
+ 'position.',
+ 'TitleVII',
+ 'emplovers',
+ 'discriminate',
+ 'discriminat',
+ 'basedo',
+ 'gender',
+ 'identity,',
+ 'General',
+ 'Holder.',
+ 'willhelpto',
+ 'onsistent',
+ 'treatment',
+ 'allclaimants',
+ 'reaffirms',
+ "epartment'",
+ 'commitment',
+ 'protecting',
+ 'vilrights']
+['what', 'date', 'was', 'the', 'memo', 'released']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['#000',
+ 'for',
+ 'ty',
+ 'FAMILY',
+ 'BUILD',
+ 'O',
+ 'WEALTH',
+ 'HAPPY',
+ 'PEOPLE',
+ 'LARLE',
+ 'HEALTH',
+ 'ONSERVATIVE',
+ 'HAppInESs',
+ 'ONTENTED',
+ 'THE',
+ 'EAMILY',
+ 'EAriy',
+ 'XSPEND',
+ 'NFAMICY',
+ 'NBANK',
+ 'SAVE',
+ 'ALL',
+ 'NTHE',
+ 'BANK',
+ 'HOUSE',
+ 'RUNA',
+ 'RAUEL',
+ 'HRLTH',
+ 'SAVE',
+ 'BANK',
+ 'YEAл',
+ 'EAMILY',
+ '3YeAa',
+ 'TEMEST',
+ 'Bus',
+ 'Ness',
+ 'EDHOOS',
+ 'HOTEC',
+ 'BUSINESS',
+ 'INET',
+ 'PANY',
+ '/NVEST',
+ 'NPEOPLE',
+ 'CLOTUES',
+ 'SHOP',
+ 'FAcToRy',
+ 'HELP',
+ 'COUSI',
+ 'HOUSE',
+ 'FoR',
+ 'Mu',
+ 'INSGRANCE',
+ '(AVELLINS',
+ 'HEALT',
+ 'Poon',
+ 'PEDOLE',
+ 'TAUSIDE',
+ 'SCHOOL',
+ 'BANK']
+['what', 'are', 'the', 'bubble', 'numbers', 'on', 'the', 'white', 'board']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['19', '05']
+['what', 'time', 'is', 'on', 'the', 'phone']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+[]
+['what', 'clothing', 'item', 'does', 'the', 'green', 'shirt', 'reference']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['Pedestrians', 'crossing']
+['what', 'are', 'pedestrians', 'doing', 'in', 'this', 'sign']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['REE']
+['which', 'road', 'is', 'to', 'the', 'right']
+dict_keys(['set_name', 'image_id', 'flickr_original_url', 'feature_path', 'answers', 'valid_answers', 'ocr_info', 'question', 'question_tokens', 'image_height', 'image_name', 'image_classes', 'question_id', 'flickr_300k_url', 'image_width', 'image_path', 'ocr_tokens'])
+'OCR_tokens'
+['MARGAL', '2010', 'CHATEAL', 'LLOOVNyaA', 'NIA', 'ว0g3พ', 'สนขหว', 'HAUT']
+['what', 'year', 'was', 'this', 'made']
