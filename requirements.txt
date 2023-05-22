@@ -8,5 +8,5 @@ torchtext>=0.2
 GitPython>=2.1
 PyYAML>=3.11
 pytest==3.3.2
-requests==2.21.0
+requests==2.31.0
 fastText
